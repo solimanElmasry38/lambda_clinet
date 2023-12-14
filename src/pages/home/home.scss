@@ -1,0 +1,23 @@
+// @use "./vars";
+// @use "./funcs";
+// @use "./mixins";
+.homeSec {
+  position: relative;
+  top: 66px;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/signupBack.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-attachment: fixed;
+
+  .homeContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin-bottom: 50px;
+  }
+}

@@ -1,0 +1,14 @@
+// @use "./vars";
+// @use "./funcs";
+// @use "./mixins";
+.or {
+  color: black;
+}
+.social {
+  width: 150px;
+  height: 50px;
+  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
