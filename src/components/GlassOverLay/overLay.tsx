@@ -1,4 +1,6 @@
 import "./overLay.scss";
-export const GlassOverLay = () => {
-  return <div className="overLay"></div>;
+export const GlassOverLay = ({children}) => {
+  return <div className="overLay">
+    {children}
+  </div>;
 };
