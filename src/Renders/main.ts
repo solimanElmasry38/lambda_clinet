@@ -1,4 +1,4 @@
-import * as three from "three"
+import * as three from "../../node_modules/@types/three"
 
 const camera = new three.PerspectiveCamera(80,16/9);
 const scene = new three.Scene();

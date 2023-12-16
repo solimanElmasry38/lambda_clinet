@@ -4,13 +4,24 @@ import { App } from "./App.tsx";
 import "./index.scss";
 import "./Renders/main.ts";
 import { BrowserRouter } from "react-router-dom";
-// import { ChakraProvider } from "@chakra-ui/react";
-
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  // useQuery,
+  // gql
+} from "@apollo/client";
+const client = new ApolloClient({
+  uri: "http://localhost:8888/graphql",
+  cache: new InMemoryCache()
+});
 ReactDOM.createRoot(document.getElementById("root")!).render(
 
     <BrowserRouter>
       <React.StrictMode>
+      <ApolloProvider client = {client}>
         <App />
+        </ApolloProvider>
       </React.StrictMode>
     </BrowserRouter>
 
