@@ -12,6 +12,8 @@ export const CREATE_USER_M=gql`
         img: $img
         password: $password
         user_name: $user_name
-        )
+        ){
+            id
+        }
     }
 `
