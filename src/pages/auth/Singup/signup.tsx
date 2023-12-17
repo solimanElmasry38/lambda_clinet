@@ -6,7 +6,8 @@ import { useState } from "react";
 import { CREATE_USER_M } from "../../../gql/mutation/createUser.gql";
 import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
-
+import post from 'axios'
+import { LazyBackground } from "../../../components/lazy";
 export const Signup = () => {
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
@@ -29,11 +30,20 @@ export const Signup = () => {
     } catch (err) {}
   };
 
-
+const h=async ()=>{
+  await post("http://127.0.0.1:8888/auth/github/callback")
+  .then((res)=>console.log(res))
+  .catch((err)=>console.log(err))
+}
   return (
     <>
-      <div className="authContainer">
-        <GlassOverLay
+     
+        <LazyBackground
+        src={
+          "https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826804/yv11nhvro6ia0yxrinwc.jpg"
+        }
+        children={
+          <GlassOverLay
           children={
             <div className="formContainer">
               <form action="" method="POST" className="authForm">
@@ -69,6 +79,7 @@ export const Signup = () => {
                 <Link
                   to={"http://localhost:8888/auth/github"}
                   className="fa-brands fa-github gitIcon"
+                onClick={()=>h()}
                 ></Link>
 
                 <Link
@@ -84,7 +95,8 @@ export const Signup = () => {
             </div>
           }
         />
-      </div>
+        }
+      />
     </>
   );
 };
