@@ -1,10 +1,12 @@
 import { GlassOverLay } from "../../../components/GlassOverLay/overLay";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import "./signup.scss";
 import "../auth.scss";
 import { useState } from "react";
 import { CREATE_USER_M } from "../../../gql/mutation/createUser.gql";
 import { useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
+
 export const Signup = () => {
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
@@ -21,11 +23,12 @@ export const Signup = () => {
           password: pass,
         },
       }).then((res) => {
-        Cookies.set('lambda_usr_id', res.data.USER_CREATE.id);
+        Cookies.set("lambda_usr_id", res.data.USER_CREATE.id);
       });
       location.replace("/verify");
     } catch (err) {}
   };
+
 
   return (
     <>
@@ -62,7 +65,22 @@ export const Signup = () => {
               </form>
               <button onClick={() => handelSubmit()}>sign up</button>
               <p className="or">or</p>
-              <div className="social">logi</div>
+              <div className="social">
+                <Link
+                  to={"http://localhost:8888/auth/github"}
+                  className="fa-brands fa-github gitIcon"
+                ></Link>
+
+                <Link
+                  to={"http://localhost:8888/auth/github"}
+                  className="fa-brands fa-google googleIcon"
+                ></Link>
+
+                <Link
+                  to={"http://localhost:8888/auth/github"}
+                  className="fa-brands fa-facebook faceIcon"
+                ></Link>
+              </div>
             </div>
           }
         />
