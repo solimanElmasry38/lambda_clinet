@@ -2,7 +2,13 @@
 import { GlassOverLay } from "../../../components/GlassOverLay/overLay";
 import "../auth.scss";
 import { LazyBackground } from "../../../components/lazy";
+
 export const Login = () => {
+
+
+
+
+
  
   return (
     <>
@@ -33,6 +39,7 @@ export const Login = () => {
 
                     <input type="submit" value="login" />
                   </form>
+                  
                 </div>
               }
             />

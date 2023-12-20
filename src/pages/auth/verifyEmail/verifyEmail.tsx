@@ -2,20 +2,20 @@ import { useState } from "react";
 import { GlassOverLay } from "../../../components/GlassOverLay/overLay";
 import "../auth.scss";
 import { useMutation } from "@apollo/client";
-import { VerifyEmail_sch } from "../../../gql/mutation/verifyEmail.gql";
+import { _VerifyEmail} from "../../../gql/mutation/verifyEmail.gql";
 import Cookies from "js-cookie";
 import { LazyBackground } from "../../../components/lazy";
 
 export const VerifyEmail = () => {
   const [otp, setOtp] = useState("");
-  const [VERIFY_EMAIL] = useMutation(VerifyEmail_sch);
+  const [VERIFY_EMAIL] = useMutation(_VerifyEmail);
 
   async function handelSubmit(): Promise<void> {
     try {
       await VERIFY_EMAIL({
         variables: {
           otp,
-          id: Cookies.get("language"),
+          id: Cookies.get("lambda_usr_id"),
         },
       }).then((res) => {
         Cookies.set("lambda_usr_token", res.data.VERIFY_EMAIL.token);
