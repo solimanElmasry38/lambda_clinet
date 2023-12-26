@@ -9,5 +9,5 @@ export function LazyBackground({ src, children }) {
       img.onload = () => setSource(src);
     }, [src]);
 
-    return <div className="authContainer" style={{ backgroundImage: `url(${source})` }}>{children}</div>;
+    return <div className="authContainer" /*style={{ backgroundImage: `url(${source})` }}*/>{children}</div>;
   }

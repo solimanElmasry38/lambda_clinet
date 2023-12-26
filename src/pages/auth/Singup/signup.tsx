@@ -9,6 +9,7 @@ import post from "axios";
 import { LazyBackground } from "../../../components/lazy";
 
 import { useState } from "react";
+import { Randshapes } from "../../../components/Randshapes/rand_shapes";
 
 export const Signup = () => {
   const [username, setusername] = useState("");
@@ -20,10 +21,13 @@ export const Signup = () => {
     try {
       await USER_CREATE({
         variables: {
-          user_name: username,
-          img: "solyimag",
-          email: email,
-          password: pass,
+          input: {
+            user_name: username,
+            img: "solyimag",
+            email: email,
+            password: pass,
+          }
+        
         },
       }).then((res) => {
         // setusrData();
@@ -45,9 +49,10 @@ export const Signup = () => {
           "https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826804/yv11nhvro6ia0yxrinwc.jpg"
         }
         children={
+          <><Randshapes />
           <GlassOverLay
             children={
-              <div className="formContainer">
+              <><div className="formContainer">
                 <form action="" method="POST" className="authForm">
                   {error && <p className="err">* {error.message}</p>}
                   <label htmlFor="user_name">user name</label>
@@ -56,24 +61,21 @@ export const Signup = () => {
                     name="user_name"
                     id="user_name"
                     placeholder="user_name"
-                    onChange={(e) => setusername(e.target.value)}
-                  />
+                    onChange={(e) => setusername(e.target.value)} />
                   <label htmlFor="email">email</label>
                   <input
                     type="email"
                     name="email"
                     id="email"
                     placeholder="user email"
-                    onChange={(e) => setemail(e.target.value)}
-                  />
+                    onChange={(e) => setemail(e.target.value)} />
                   <label htmlFor="password">password</label>
                   <input
                     type="password"
                     name="password"
                     id="password"
                     placeholder="password"
-                    onChange={(e) => setpass(e.target.value)}
-                  />
+                    onChange={(e) => setpass(e.target.value)} />
                 </form>
                 <button onClick={() => handelSubmit()}>sign up</button>
                 <p className="or">or</p>
@@ -94,9 +96,9 @@ export const Signup = () => {
                     className="fa-brands fa-facebook faceIcon"
                   ></Link>
                 </div>
-              </div>
-            }
-          />
+
+
+              </div></>} /></>
         }
       />
     </>
