@@ -14,18 +14,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:10px;
-  a{
+  padding: 10px;
+  a {
     font-size: 40px;
     cursor: pointer;
-    &.faceIcon{
-      color:red;
+    &.faceIcon {
+      color: red;
     }
-    &.gitIcon{
-      color:rgb(0, 110, 255);
+    &.gitIcon {
+      color: rgb(0, 110, 255);
     }
-    &.googleIcon{
-      color:rgb(208, 255, 0);
+    &.googleIcon {
+      color: rgb(208, 255, 0);
     }
   }
 }

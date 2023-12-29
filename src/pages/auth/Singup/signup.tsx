@@ -26,15 +26,13 @@ export const Signup = () => {
             img: "solyimag",
             email: email,
             password: pass,
-          }
-        
+          },
         },
       }).then((res) => {
-        // setusrData();
         Cookies.set("lambda_usr_id", res.data.USER_CREATE.id);
       });
       location.replace("/verify");
-    } catch (err) {}
+    } catch (err) {throw err}
   };
 
   const h = async () => {
@@ -43,64 +41,62 @@ export const Signup = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <>
-      <LazyBackground
-        src={
-          "https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826804/yv11nhvro6ia0yxrinwc.jpg"
-        }
-        children={
-          <><Randshapes />
-          <GlassOverLay
-            children={
-              <><div className="formContainer">
-                <form action="" method="POST" className="authForm">
-                  {error && <p className="err">* {error.message}</p>}
-                  <label htmlFor="user_name">user name</label>
-                  <input
-                    type="text"
-                    name="user_name"
-                    id="user_name"
-                    placeholder="user_name"
-                    onChange={(e) => setusername(e.target.value)} />
-                  <label htmlFor="email">email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="user email"
-                    onChange={(e) => setemail(e.target.value)} />
-                  <label htmlFor="password">password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="password"
-                    onChange={(e) => setpass(e.target.value)} />
-                </form>
-                <button onClick={() => handelSubmit()}>sign up</button>
-                <p className="or">or</p>
-                <div className="social">
-                  <Link
-                    to={"http://localhost:8888/auth/github"}
-                    className="fa-brands fa-github gitIcon"
-                    onClick={() => h()}
-                  ></Link>
+    <LazyBackground
+      src={
+        "https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826804/yv11nhvro6ia0yxrinwc.jpg"
+      }
+    >
+      <Randshapes />
+      <GlassOverLay>
+        <div className="formContainer">
+          <form action="" method="POST" className="authForm">
+            {error && <p className="err">* {error.message}</p>}
+            <label htmlFor="user_name">user name</label>
+            <input
+              type="text"
+              name="user_name"
+              id="user_name"
+              placeholder="user_name"
+              onChange={(e) => setusername(e.target.value)}
+            />
+            <label htmlFor="email">email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="user email"
+              onChange={(e) => setemail(e.target.value)}
+            />
+            <label htmlFor="password">password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              onChange={(e) => setpass(e.target.value)}
+            />
+          </form>
+          <button onClick={() => handelSubmit()}>sign up</button>
+          <p className="or">or</p>
+          <div className="social">
+            <Link
+              to={"http://localhost:8888/auth/github"}
+              className="fa-brands fa-github gitIcon"
+              onClick={() => h()}
+            ></Link>
 
-                  <Link
-                    to={"http://localhost:8888/auth/github"}
-                    className="fa-brands fa-google googleIcon"
-                  ></Link>
+            <Link
+              to={"http://localhost:8888/auth/github"}
+              className="fa-brands fa-google googleIcon"
+            ></Link>
 
-                  <Link
-                    to={"http://localhost:8888/auth/github"}
-                    className="fa-brands fa-facebook faceIcon"
-                  ></Link>
-                </div>
-
-
-              </div></>} /></>
-        }
-      />
-    </>
+            <Link
+              to={"http://localhost:8888/auth/github"}
+              className="fa-brands fa-facebook faceIcon"
+            ></Link>
+          </div>
+        </div>
+      </GlassOverLay>
+    </LazyBackground>
   );
 };

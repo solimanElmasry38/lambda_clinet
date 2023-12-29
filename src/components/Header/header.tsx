@@ -1,8 +1,27 @@
+import { useQuery } from "@apollo/client";
 import Logo from "../../assets/logo.png";
 import "./header.scss";
 import Cookies from "js-cookie";
+import { _GetUser } from "../../gql/query/getUser.gql";
+import { Spinner } from "../spinner/spinner";
 
+const logout = () => {
+  Cookies.remove("lambda_usr_token");
+  location.reload();
+};
 export const Header = () => {
+  const { data, loading } = useQuery(_GetUser, {
+    variables: {
+      input: {
+        id: Cookies.get("lambda_usr_id"),
+        token: Cookies.get("lambda_usr_token"),
+      },
+    },
+  });
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <header>
       <nav>
@@ -16,24 +35,41 @@ export const Header = () => {
         </form>
         <ul>
           <li>
-            <a href="">Home</a>
+            <a className="nav_btn" href="">
+              Home
+            </a>
           </li>
 
           {Cookies.get("lambda_usr_token") ? (
-        
             <>
               <li>
-                <a href="">logout</a>
+                <span className="nav_btn" onClick={logout}>
+                  logout
+                </span>
               </li>
-              <span className="profile">span</span>
+
+              {data ? (
+                <img
+                  src={data.USER_GET.img}
+                  alt=""
+                  loading="lazy"
+                  className="profile"
+                />
+              ) : (
+                <span></span>
+              )}
             </>
           ) : (
             <>
               <li>
-                <a href="">login</a>
+                <a className="nav_btn" href="">
+                  login
+                </a>
               </li>
               <li>
-                <a href="">Signup</a>
+                <a className="nav_btn" href="">
+                  Signup
+                </a>
               </li>
             </>
           )}
