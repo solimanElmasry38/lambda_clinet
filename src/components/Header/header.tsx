@@ -3,7 +3,7 @@ import Logo from "../../assets/logo.png";
 import "./header.scss";
 import Cookies from "js-cookie";
 import { _GetUser } from "../../gql/query/getUser.gql";
-import { Spinner } from "../spinner/spinner";
+
 
 const logout = () => {
   Cookies.remove("lambda_usr_token");
@@ -19,7 +19,7 @@ export const Header = () => {
     },
   });
   if (loading) {
-    return <Spinner />;
+    return "loading"
   }
 
   return (

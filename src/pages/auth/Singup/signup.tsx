@@ -11,7 +11,7 @@ import { LazyBackground } from "../../../components/lazy";
 import { useState } from "react";
 import { Randshapes } from "../../../components/Randshapes/rand_shapes";
 
-export const Signup = () => {
+const Signup = () => {
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
@@ -100,3 +100,4 @@ export const Signup = () => {
     </LazyBackground>
   );
 };
+export default Signup;

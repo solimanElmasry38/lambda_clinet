@@ -6,7 +6,7 @@ import { _VerifyEmail } from "../../../gql/mutation/verifyEmail.gql";
 import Cookies from "js-cookie";
 import { LazyBackground } from "../../../components/lazy";
 
-export const VerifyEmail = () => {
+ const VerifyEmail = () => {
   const [otp, setOtp] = useState("");
   const [VERIFY_EMAIL] = useMutation(_VerifyEmail);
 
@@ -51,3 +51,4 @@ export const VerifyEmail = () => {
     </LazyBackground>
   );
 };
+export default VerifyEmail;

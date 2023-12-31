@@ -5,9 +5,9 @@ import { useQuery } from "@apollo/client";
 import { _GetOffers } from "../../gql/query/getOffers";
 import Cookies from "js-cookie";
 import {  useState } from "react";
-import { Spinner } from "../../components/spinner/spinner";
 
-export const Home = () => {
+
+const Home = () => {
 
   const [images] = useState<string[]>([]);
 
@@ -76,3 +76,4 @@ arr.forEach((el: { img: string; }) => {
 };
 
 // };
+export default Home;

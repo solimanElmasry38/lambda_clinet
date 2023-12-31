@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import { _Login } from "../../../gql/mutation/login.gql";
 import Cookies from "js-cookie";
 
-export const Login = ():JSX.Element => { 
+const Login = ():JSX.Element => { 
 
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
@@ -66,3 +66,4 @@ export const Login = ():JSX.Element => {
     </LazyBackground>
   );
 };
+export default Login;
