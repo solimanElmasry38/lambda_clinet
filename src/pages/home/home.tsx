@@ -1,62 +1,78 @@
-import { CourseCard } from "../../components/CourseCard/courseCard";
-import { GlassOverLay } from "../../components/GlassOverLay/overLay";
-import { isLoadingContx } from "../../context/isLoading";
-import { useContext, useEffect } from "react";
+
 import "./home.scss";
+import { Carousel } from "../../components/Carousel/Carousel";
+import { useQuery } from "@apollo/client";
+import { _GetOffers } from "../../gql/query/getOffers";
+import Cookies from "js-cookie";
+import {  useState } from "react";
 import { Spinner } from "../../components/spinner/spinner";
 
 export const Home = () => {
 
-  // const {isLoading}=useContext(isLoadingContx)
-  // console.log(isLoading)
+  const [images] = useState<string[]>([]);
 
-  // useEffect(()=> {
-  //   else{
-  //    lod=false
+  
 
-  //   }
-  // }, [isLoading]);
+  const { data, loading } = useQuery(_GetOffers, {
+    variables: {
+      input: {
+        usr_id: Cookies.get("lambda_usr_id"),
+        usr_token: Cookies.get("lambda_usr_token"),
+      },
+    },
+  });
+  // if (loading) {
 
-
-  // if(isLoading){
-  //   console.log('"in fuc"')
-  //   setTimeout(() => {
-      
-  //   }, 3000);
-  //     return <Spinner/>;
- 
-  //  }else{
-
-      
-        // console.log(isLoading)
-      
-        return (
-          <>
-            <section className="homeSec">
-              <div className="slider"></div>
-              <div className="homeContainer">
-                <GlassOverLay
-                  children={
-                    <>
-                      <CourseCard />
-                      <CourseCard />
-                      <CourseCard />
-                      <CourseCard />
-                      <CourseCard />
-                      <CourseCard />
-                      <CourseCard />
-                      <CourseCard />
-                      <CourseCard />
-                      <CourseCard />
-                    </>
-                  }
-                />
-              </div>
-            </section>
-          </>
-        );
-   }
+  // return <GlassOverLay />;
 
 
+
+  // }
+
+  if(!loading){
+   
+    const arr=data.OFFERS_GET;
+
+
+arr.forEach((el: { img: string; }) => {
+  
+  images.push(el.img)
+});
+
+
+
+
+
+  }
+
+  return (
+    <>
+      <section className="homeSec">
+        <div className="slider">
+          <Carousel images={images} />
+        </div>
+        <div className="homeContainer">
+         
+          {/* <GlassOverLay
+            children={
+              <>
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+              </>
+            }
+          /> */}
+        </div>
+      </section>
+    </>
+  );
+};
 
 // };

@@ -1,4 +1,6 @@
 import "./spinner.scss";
 export const Spinner = () => {
-  return (<span className="loader"></span>)
+  return (<div className="over">
+    <span className="loader"></span>
+    </div>)
 };

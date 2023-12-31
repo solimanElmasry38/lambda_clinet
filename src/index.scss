@@ -17,28 +17,23 @@
 }
 * {
   margin: 0;
-// overflow:hidden ;
+
   padding: 0;
   border: none;
   outline: none;
   transition:.5s;
 }
 body {
-  background: teal;
+  min-width: 100vh;
+  min-height: 100vh;
 }
-html,
-body,
-#root {
-  width: 100%;
-  min-height: 100%;
- 
-}
+
 #root {
   display: flex;
-  // justify-content: space-between;
+
   flex-direction: column;
-//  z-index: -100;
-  background: #535bf2;
+
+
 }
 a {
   font-weight: 500;

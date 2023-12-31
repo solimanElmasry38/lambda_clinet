@@ -6,8 +6,6 @@ import { Header } from "./components/Header/header";
 import { Footer } from "./components/Footer/footer";
 import { VerifyEmail } from "./pages/auth/verifyEmail/verifyEmail";
 
-import { useState } from "react";
-
 export const Routs = () => {  
  
 
