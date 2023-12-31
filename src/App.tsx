@@ -3,7 +3,7 @@ import { Footer } from "./components/Footer/footer";
 import { Header } from "./components/Header/header";
 
 import * as React from "react";
-import PrivateRoutes from "./protected_routes";
+import PrivateRoutes from "./utils/protected_routes";
 import { Spinner } from "./components/Spinner/Spinner";
 
 const VerifyEmail = React.lazy(
