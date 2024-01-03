@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Carousel.scss";
 import { AnimatePresence, motion } from "framer-motion";
+import { useQuery } from "@apollo/client";
+import { _GetOffers } from "../../gql/query/getOffers";
+import Cookies from "js-cookie";
 
-export const Carousel = ({ images }) => {
+export const Carousel = ({images}) => {
+  
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState("left");
   const handleNext = () => {
@@ -19,7 +23,7 @@ export const Carousel = ({ images }) => {
       clearInterval(intr_id);
     };
   }, []);
- 
+
   const handlePrevious = () => {
     setDirection("left");
     setCurrentIndex((prevIndex) =>
@@ -33,11 +37,11 @@ export const Carousel = ({ images }) => {
   const slideVariants = {
     hiddenRight: {
       x: "100%",
-      opacity: .5,
+      opacity: 0.5,
     },
     hiddenLeft: {
       x: "-100%",
-      opacity: .5,
+      opacity: 0.5,
     },
     visible: {
       x: "0",
