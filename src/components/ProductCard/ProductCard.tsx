@@ -1,7 +1,9 @@
 import "./ProductCard.scss";
-export const ProductCard = ({ data }) => {
-  const { id, name, img, price, count, is_available, desc } = data;
-
+export const ProductCard = ({ data ,btn}) => {
+  //id
+  //count
+  const {  name, img, price,  is_available, desc } = data;
+console.log(data)
   return (
     <div className="item-container">
       <div className="main-item">
@@ -24,7 +26,10 @@ export const ProductCard = ({ data }) => {
         <sup>$</sup>
         {price}
       </p>
-      <button className="item-cart-btn">Add To Cart</button>
+      {
+      is_available? btn: <p>not avilable</p> 
+      }
+    
     </div>
   );
 };
