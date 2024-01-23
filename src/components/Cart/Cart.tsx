@@ -1,22 +1,16 @@
-import { Ts } from "../../pages/home/home";
+import { cartProducts } from "../../pages/home/home";
 import "./Cart.scss";
 interface Iprops {
   isVisable: boolean;
-  products: Ts[];
-  onProductRemove(): void;
-  onQuantityChange(): void;
+  products: cartProducts[];
+
 }
 export const Cart = ({
   isVisable,
   products,
-  onProductRemove,
-  onQuantityChange,
+  
 }: Iprops) => {
-  console.log("vvis" + isVisable);
-  console.log(products);
-  console.log(onProductRemove);
-  console.log(onQuantityChange);
-console.log("len"+products.length)
+  
   return (
     <div
       className="cartContainer"
@@ -27,7 +21,7 @@ console.log("len"+products.length)
           <p className="empty">cart is emptey</p>
         ) : (
           products.map((product) => (
-            <div className="cartProdContainer" key={product.id}>
+            <div className="cartProdContainer" key={product.id+`${Math.random()}`}>
               <img
                 className="productImage"
                 src={product.img}
@@ -36,12 +30,12 @@ console.log("len"+products.length)
               <div className="price">
                 <p className="productName">{product.name}</p>
                 <p className="productPrice">
-                  {product.price}$*{3}
+                  {product.price}$*{product.quantity}
                 </p>
               </div>
               <div className="count">
                 <i className="fa-solid fa-trash"></i>
-                <p className="total">{product.price * 3}$</p>
+                <p className="total">{product.price * product.quantity}$</p>
               </div>
             </div>
           ))
