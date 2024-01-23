@@ -8,21 +8,23 @@ import { _GetProducts } from "../../gql/query/getPoducts.gql";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { Cart } from "../../components/Cart/Cart";
 import { useCart } from "../../context/cartCtx";
-// import {useCart}from "../../context/cartCtx.tsx"
 export type cartProducts = {
   id: string;
-  img: string;
-
-  name: string;
-  price: number;
+  // img: string;
+  // name: string;
+  // price: number;
   quantity: number;
 };
 const Home = () => {
   const [images] = useState<string[]>([]);
-  const [isVisable, setIsVisable] = useState(false);
-  const [products, setProducts] = useState<cartProducts[]>([] as cartProducts[]);
 
-const {addToCart,removeFromCart}=useCart()
+  const [products, setProducts] = useState<cartProducts[]>(
+    [] as cartProducts[]
+  );
+
+  const { addToCart, removeFromCart, cartVisablity, openCart, closeCart,cartItems } =
+    useCart();
+    
   const obj = useQuery(_GetOffers, {
     variables: {
       input: {
@@ -46,14 +48,19 @@ const {addToCart,removeFromCart}=useCart()
     return <p>loading</p>;
   }
 
-
   return (
     <>
       <section className="homeSec">
         <div
           className="cartIcon"
           onClick={() => {
-            setIsVisable((current) => !current);
+            if(cartVisablity){
+              closeCart()
+            }else{
+              setProducts(cartItems);
+              openCart() ;
+            }
+             
           }}
         >
           <i className="fa-solid fa-cart-shopping"></i>
@@ -65,11 +72,13 @@ const {addToCart,removeFromCart}=useCart()
           {data.PRODUCTS_GET.map((product) => (
             <div key={product.id}>
               <ProductCard data={product}>
-                <button onClick={()=>removeFromCart(product.id)}>remove</button>
+                <button onClick={() => removeFromCart(product.id)}>
+                  remove
+                </button>
                 {product.is_available ? (
                   <button
                     className="item-cart-btn"
-                    onClick={() =>addToCart(product.id)  }
+                    onClick={() => addToCart(product.id)}
                   >
                     Add To Cart
                   </button>
@@ -79,11 +88,7 @@ const {addToCart,removeFromCart}=useCart()
               </ProductCard>
             </div>
           ))}
-          <Cart
-            isVisable={isVisable}
-            products={products}
-            
-          />
+          <Cart isVisable={cartVisablity} products={products} removeProduct={removeFromCart}/>
         </div>
       </section>
     </>

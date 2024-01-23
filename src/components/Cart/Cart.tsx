@@ -3,12 +3,12 @@ import "./Cart.scss";
 interface Iprops {
   isVisable: boolean;
   products: cartProducts[];
-
+  removeProduct;
 }
 export const Cart = ({
   isVisable,
   products,
-  
+  removeProduct,
 }: Iprops) => {
   
   return (
@@ -34,7 +34,7 @@ export const Cart = ({
                 </p>
               </div>
               <div className="count">
-                <i className="fa-solid fa-trash"></i>
+                <i className="fa-solid fa-trash" onClick={removeProduct()}></i>
                 <p className="total">{product.price * product.quantity}$</p>
               </div>
             </div>
