@@ -2,7 +2,7 @@ import { cartProducts } from "../../pages/home/home";
 import "./Cart.scss";
 interface Iprops {
   isVisable: boolean;
-  products: cartProducts[];
+  products;
   removeProduct;
 }
 export const Cart = ({
@@ -16,7 +16,7 @@ export const Cart = ({
       className="cartContainer"
       style={{ display: isVisable ? "block" : "none" }}
     >
-      <div className="cart">
+      {/* <div className="cart">
         {products.length < 2 ? (
           <p className="empty">cart is emptey</p>
         ) : (
@@ -40,7 +40,7 @@ export const Cart = ({
             </div>
           ))
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

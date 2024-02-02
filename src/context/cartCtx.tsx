@@ -2,6 +2,9 @@ import React, { useState, createContext, useContext } from "react";
 
 interface items {
   id: string;
+  // img: string;
+  // name: string;
+  // price: number;
   quantity: number;
 }
 interface IcartCTX {
@@ -53,7 +56,7 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
   };
 
   const addToCart = (id: string) => {
-    setCartItems((currItem) => {
+    setCartItems((currItem ):items[]  => {
       if (currItem.find((item) => item.id === id) == null) {
         console.log("add to cart firs time" + JSON.stringify(cartItems));
         return [...currItem, { id, quantity: 1 }];

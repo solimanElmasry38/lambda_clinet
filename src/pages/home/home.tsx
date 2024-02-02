@@ -10,17 +10,15 @@ import { Cart } from "../../components/Cart/Cart";
 import { useCart } from "../../context/cartCtx";
 export type cartProducts = {
   id: string;
-  // img: string;
-  // name: string;
-  // price: number;
+  img: string;
+  name: string;
+  price: number;
   quantity: number;
 };
 const Home = () => {
   const [images] = useState<string[]>([]);
 
-  const [products, setProducts] = useState<cartProducts[]>(
-    [] as cartProducts[]
-  );
+  
 
   const { addToCart, removeFromCart, cartVisablity, openCart, closeCart,cartItems } =
     useCart();
@@ -57,7 +55,7 @@ const Home = () => {
             if(cartVisablity){
               closeCart()
             }else{
-              setProducts(cartItems);
+             
               openCart() ;
             }
              
@@ -88,8 +86,9 @@ const Home = () => {
               </ProductCard>
             </div>
           ))}
-          <Cart isVisable={cartVisablity} products={products} removeProduct={removeFromCart}/>
+          {/* <Cart isVisable={cartVisablity} products={cartItems} removeProduct={removeFromCart}/> */}
         </div>
+       
       </section>
     </>
   );
