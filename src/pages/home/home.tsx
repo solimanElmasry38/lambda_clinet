@@ -6,8 +6,12 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { _GetProducts } from "../../gql/query/getPoducts.gql";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
-import { Cart } from "../../components/Cart/Cart";
+
 import { useCart } from "../../context/cartCtx";
+import { findItem } from "../../components/Cart/findItems";
+import { _GetProduct } from "../../gql/query/getProduct.gql";
+import { Cart } from "../../components/Cart/Cart";
+import { FindItm } from "../../components/findItems/findIrm";
 export type cartProducts = {
   id: string;
   img: string;
@@ -18,12 +22,17 @@ export type cartProducts = {
 const Home = () => {
   const [images] = useState<string[]>([]);
 
+  const {
+    addToCart,
+    removeFromCart,
+    cartVisablity,
+    openCart,
+    closeCart,
+    cartItems,
   
+  } = useCart();
 
-  const { addToCart, removeFromCart, cartVisablity, openCart, closeCart,cartItems } =
-    useCart();
-    
-  const obj = useQuery(_GetOffers, {
+  const offersQuery = useQuery(_GetOffers, {
     variables: {
       input: {
         usr_id: Cookies.get("lambda_usr_id"),
@@ -31,43 +40,28 @@ const Home = () => {
       },
     },
   });
-
-  if (!obj.loading) {
-    const arr = obj.data.OFFERS_GET;
+  if (!offersQuery.loading) {
+    const arr = offersQuery.data.OFFERS_GET;
 
     arr.forEach((el: { img: string }) => {
       images.push(el.img);
     });
   }
 
-  const { data, loading } = useQuery(_GetProducts);
+  const ProductsQuery = useQuery(_GetProducts);
 
-  if (loading) {
+  if (ProductsQuery.loading) {
     return <p>loading</p>;
   }
 
   return (
     <>
       <section className="homeSec">
-        <div
-          className="cartIcon"
-          onClick={() => {
-            if(cartVisablity){
-              closeCart()
-            }else{
-             
-              openCart() ;
-            }
-             
-          }}
-        >
-          <i className="fa-solid fa-cart-shopping"></i>
-        </div>
         <div className="slider">
           <Carousel images={images} />
         </div>
         <div className="homeContainer">
-          {data.PRODUCTS_GET.map((product) => (
+          {ProductsQuery.data.PRODUCTS_GET.map((product) => (
             <div key={product.id}>
               <ProductCard data={product}>
                 <button onClick={() => removeFromCart(product.id)}>
@@ -86,9 +80,17 @@ const Home = () => {
               </ProductCard>
             </div>
           ))}
-          {/* <Cart isVisable={cartVisablity} products={cartItems} removeProduct={removeFromCart}/> */}
+          <Cart
+            isVisable={cartVisablity}
+            cartVisablity={cartVisablity}
+            openCart={openCart}
+            closeCart={closeCart}
+            products={cartItems}
+            removeProduct={removeFromCart}
+            cartItems={cartItems}
+          />
+          {/* <FindItm /> */}
         </div>
-       
       </section>
     </>
   );

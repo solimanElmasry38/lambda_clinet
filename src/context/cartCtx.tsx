@@ -1,4 +1,6 @@
-import React, { useState, createContext, useContext } from "react";
+import { useQuery } from "@apollo/client";
+import React, { useState, createContext, useContext, useEffect } from "react";
+import { _GetProduct } from "../gql/query/getProduct.gql";
 
 interface items {
   id: string;
@@ -17,6 +19,7 @@ interface IcartCTX {
   addToCart: (id: string) => void;
   openCart: () => void;
   closeCart: () => void;
+  findProds
 }
 const cartCTX = createContext<IcartCTX>({} as IcartCTX);
 interface ShoppingCartProviderProps {
@@ -27,6 +30,7 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
 }) => {
   const [cartVisablity, setcartVisablity] = useState(false);
   const [cartItems, setCartItems] = useState<items[]>([]);
+  const [arr,setarr]=useState({});
   
   const cartQuantity = 9;
 
@@ -75,7 +79,35 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
       // console.log("final "+JSON.stringify(cartItems));
     });
   };
+  const findProds=()=>{
 
+    cartItems.forEach(element=> {
+      
+      const { data, loading } = useQuery(_GetProduct, {
+        variables: {
+          input: {
+            id: element.id,
+          },
+        },
+      });
+  
+      if(!loading){
+        useEffect(()=>{
+
+          setarr((prev)=>{
+              return [{...prev,prods:data.PRODUCT_GET}]
+          })
+        },[arr])
+  // console.log(JSON.stringify(data.PRODUCT_GET))
+      }
+    });
+  
+       
+    
+  
+  console.log("hi from"+JSON.stringify(arr) )
+
+  }
   const openCart = () => {
     setcartVisablity(true);
   };
@@ -96,6 +128,7 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
         closeCart,
         cartVisablity,
         decreaseItemQuantity,
+        findProds
       }}
     >
       {children}
