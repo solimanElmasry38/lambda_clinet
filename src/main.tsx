@@ -6,6 +6,7 @@ import "./assets/libs/all.min.css";
 import { BrowserRouter } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { CartProvider } from "./context/cartCtx.tsx";
+import { SpinnerProvider } from "./context/spinnerCtx.tsx";
 const client = new ApolloClient({
   uri: "http://localhost:8888/graphql",
   cache: new InMemoryCache(),
@@ -15,7 +16,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     {/* <React.StrictMode> */}
       <ApolloProvider client={client}>
     <CartProvider>
+      <SpinnerProvider>
+
         <App />
+      </SpinnerProvider>
     </CartProvider>
       </ApolloProvider>
     {/* </React.StrictMode> */}

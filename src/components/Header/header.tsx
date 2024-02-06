@@ -3,6 +3,7 @@ import Logo from "../../assets/logo.png";
 import "./header.scss";
 import Cookies from "js-cookie";
 import { _GetUser } from "../../gql/query/getUser.gql";
+import { Spinner } from "../Spinner/Spinner";
 
 
 const logout = () => {
@@ -19,7 +20,7 @@ export const Header = () => {
     },
   });
   if (loading) {
-    return "loading"
+    return <Spinner />
   }
 
   return (

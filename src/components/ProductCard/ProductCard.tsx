@@ -4,7 +4,7 @@ export const ProductCard = ({ data ,children}) => {
   //count
   // is_available,
   const {  name, img, price,  desc } = data;
-// console.log(data)
+
   return (
     <div className="item-container">
       <div className="main-item">

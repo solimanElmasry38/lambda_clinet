@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Carousel.scss";
 import { AnimatePresence, motion } from "framer-motion";
-import { useQuery } from "@apollo/client";
+
 import { _GetOffers } from "../../gql/query/getOffers";
-import Cookies from "js-cookie";
+
 
 export const Carousel = ({images}) => {
   
@@ -37,24 +37,24 @@ export const Carousel = ({images}) => {
   const slideVariants = {
     hiddenRight: {
       x: "100%",
-      opacity: 0.5,
+      opacity: 0.2,
     },
     hiddenLeft: {
       x: "-100%",
-      opacity: 0.5,
+      opacity: 0.2,
     },
     visible: {
       x: "0",
       opacity: 1,
       transition: {
-        duration: 0.2,
+        duration: 0.8,
       },
     },
     exit: {
       opacity: 0,
       scale: 0.8,
       transition: {
-        duration: 0.2,
+        duration: 0.8,
       },
     },
   };

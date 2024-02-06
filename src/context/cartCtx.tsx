@@ -1,12 +1,7 @@
-import { useQuery } from "@apollo/client";
-import React, { useState, createContext, useContext, useEffect } from "react";
-import { _GetProduct } from "../gql/query/getProduct.gql";
+import React, { useState, createContext, useContext } from "react";
 
 interface items {
   id: string;
-  // img: string;
-  // name: string;
-  // price: number;
   quantity: number;
 }
 interface IcartCTX {
@@ -15,11 +10,10 @@ interface IcartCTX {
   cartVisablity: boolean;
   itemQuantity: () => number;
   removeFromCart: (id: string) => void;
-  decreaseItemQuantity:(id:string)=>void;
+  decreaseItemQuantity: (id: string) => void;
   addToCart: (id: string) => void;
   openCart: () => void;
   closeCart: () => void;
-  findProds
 }
 const cartCTX = createContext<IcartCTX>({} as IcartCTX);
 interface ShoppingCartProviderProps {
@@ -30,19 +24,18 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
 }) => {
   const [cartVisablity, setcartVisablity] = useState(false);
   const [cartItems, setCartItems] = useState<items[]>([]);
-  const [arr,setarr]=useState({});
   
+
   const cartQuantity = 9;
 
   const itemQuantity = () => {
     return 6;
   };
 
-
   const removeFromCart = (id: string) => {
     setCartItems((currItem) => currItem.filter((item) => item.id !== id));
   };
-  
+
   const decreaseItemQuantity = (id: string) => {
     setCartItems((curritem) => {
       if (curritem.find((item) => item.id === id)?.quantity === 1) {
@@ -60,7 +53,7 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
   };
 
   const addToCart = (id: string) => {
-    setCartItems((currItem ):items[]  => {
+    setCartItems((currItem): items[] => {
       if (currItem.find((item) => item.id === id) == null) {
         console.log("add to cart firs time" + JSON.stringify(cartItems));
         return [...currItem, { id, quantity: 1 }];
@@ -79,35 +72,7 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
       // console.log("final "+JSON.stringify(cartItems));
     });
   };
-  const findProds=()=>{
 
-    cartItems.forEach(element=> {
-      
-      const { data, loading } = useQuery(_GetProduct, {
-        variables: {
-          input: {
-            id: element.id,
-          },
-        },
-      });
-  
-      if(!loading){
-        useEffect(()=>{
-
-          setarr((prev)=>{
-              return [{...prev,prods:data.PRODUCT_GET}]
-          })
-        },[arr])
-  // console.log(JSON.stringify(data.PRODUCT_GET))
-      }
-    });
-  
-       
-    
-  
-  console.log("hi from"+JSON.stringify(arr) )
-
-  }
   const openCart = () => {
     setcartVisablity(true);
   };
@@ -115,7 +80,7 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
   const closeCart = () => {
     setcartVisablity(false);
   };
- 
+
   return (
     <cartCTX.Provider
       value={{
@@ -128,7 +93,6 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
         closeCart,
         cartVisablity,
         decreaseItemQuantity,
-        findProds
       }}
     >
       {children}
