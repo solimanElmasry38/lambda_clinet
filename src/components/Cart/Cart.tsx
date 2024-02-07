@@ -7,8 +7,7 @@ interface Iprops {
 
   removeProduct;
   cartVisablity;
-  openCart;
-  closeCart;
+ 
   cartItems;
 }
 
@@ -16,23 +15,11 @@ export const Cart = ({
   isVisable,
   cartItems,
   cartVisablity,
-  openCart,
-  closeCart,
+ 
 }: Iprops) => {
   return (
     <>
-      <div
-        className="cartIcon"
-        onClick={() => {
-          if (cartVisablity) {
-            closeCart();
-          } else {
-            openCart();
-          }
-        }}
-      >
-        <i className="fa-solid fa-cart-shopping"></i>
-      </div>
+ 
       <div
         className="cartContainer"
         style={{ display: isVisable ? "block" : "none" }}

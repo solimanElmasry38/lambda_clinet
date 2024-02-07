@@ -88,8 +88,7 @@ const Home = () => {
           <Cart
             isVisable={cartVisablity}
             cartVisablity={cartVisablity}
-            openCart={openCart}
-            closeCart={closeCart}
+          
         
             removeProduct={removeFromCart}
             cartItems={cartItems}

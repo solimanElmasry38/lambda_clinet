@@ -37,10 +37,10 @@ header {
       display: flex;
       align-items: center;
       justify-content: center;
-      .submit{
+      .submit {
         width: 15%;
         height: 65%;
-       
+
         background: red;
       }
       input {
@@ -70,14 +70,28 @@ header {
           color: #8e93f0;
           cursor: pointer;
         }
+        &.cartIconContainer {
+          width: 20%;
+          height: 70%;
+          background: #313b66;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #8e93f0;
+          cursor: pointer;
+          border-radius: 50%;
+          i {
+            color: #8e93f0;
+            font-size: 22px;
+          }
+        }
       }
-      img.profile{
+      img.profile {
         width: 50px;
         height: 50px;
         background: red;
         border-radius: 50%;
         cursor: pointer;
-
       }
     }
   }
