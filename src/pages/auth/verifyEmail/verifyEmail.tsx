@@ -6,7 +6,7 @@ import { _VerifyEmail } from "../../../gql/mutation/verifyEmail.gql";
 import Cookies from "js-cookie";
 import { LazyBackground } from "../../../components/lazy";
 
- const VerifyEmail = () => {
+const VerifyEmail = () => {
   const [otp, setOtp] = useState("");
   const [VERIFY_EMAIL] = useMutation(_VerifyEmail);
 
@@ -14,11 +14,10 @@ import { LazyBackground } from "../../../components/lazy";
     try {
       await VERIFY_EMAIL({
         variables: {
-          input :{
-
+          input: {
             otp,
             id: Cookies.get("lambda_usr_id"),
-          }
+          },
         },
       }).then((res) => {
         Cookies.set("lambda_usr_token", res.data.VERIFY_EMAIL.token);

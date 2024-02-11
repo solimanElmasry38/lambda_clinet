@@ -4,22 +4,13 @@ import "./Cart.scss";
 
 interface Iprops {
   isVisable: boolean;
-
   removeProduct;
-  cartVisablity;
- 
   cartItems;
 }
 
-export const Cart = ({
-  isVisable,
-  cartItems,
-  cartVisablity,
- 
-}: Iprops) => {
+export const Cart = ({ isVisable, cartItems}: Iprops) => {
   return (
     <>
- 
       <div
         className="cartContainer"
         style={{ display: isVisable ? "block" : "none" }}
@@ -28,7 +19,7 @@ export const Cart = ({
           {cartItems.length < 1 ? (
             <p className="empty">cart is emptey</p>
           ) : (
-            cartItems.map((item) => (
+            cartItems.map((item: { id: string; quantity: number; }) => (
               <CartItem
                 key={`${item.id} ${Math.random()}`}
                 id={item.id}

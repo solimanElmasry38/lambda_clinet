@@ -16,7 +16,7 @@
   margin-top: 65px;
   display: grid;
   grid-template-columns: 1fr;
-  
+
   .formContainer {
     grid-row-start: 1;
     grid-column-start: 1;
@@ -50,8 +50,8 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-      gap:10px;
-      label{
+      gap: 10px;
+      label {
         color: black;
         text-transform: capitalize;
         font-weight: 700;

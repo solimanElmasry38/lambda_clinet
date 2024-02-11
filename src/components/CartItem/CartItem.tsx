@@ -1,6 +1,5 @@
 import { useQuery } from "@apollo/client";
 import { _GetProduct } from "../../gql/query/getProduct.gql";
-
 import { useCart } from "../../context/cartCtx";
 import { Spinner } from "../Spinner/Spinner";
 

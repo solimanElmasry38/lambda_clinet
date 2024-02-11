@@ -32,7 +32,9 @@ const Signup = () => {
         Cookies.set("lambda_usr_id", res.data.USER_CREATE.id);
       });
       location.replace("/verify");
-    } catch (err) {throw err}
+    } catch (err) {
+      throw err;
+    }
   };
 
   const h = async () => {

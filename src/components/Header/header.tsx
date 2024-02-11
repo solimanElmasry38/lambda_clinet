@@ -72,25 +72,22 @@ export const Header = () => {
                   Signup
                 </a>
               </li>
-             
             </>
           )}
-           <li className="cartIconContainer"
-           onClick={() => {
-            if (cartVisablity) {
-              closeCart();
-            } else {
-              openCart();
-            }
-          }}
-           >
-                <div
-                  className="cartIcon"
-                  
-                >
-                  <i className="fa-solid fa-cart-shopping"></i>
-                </div>
-              </li>
+          <li
+            className="cartIconContainer"
+            onClick={() => {
+              if (cartVisablity) {
+                closeCart();
+              } else {
+                openCart();
+              }
+            }}
+          >
+            <div className="cartIcon">
+              <i className="fa-solid fa-cart-shopping"></i>
+            </div>
+          </li>
         </ul>
       </nav>
     </header>

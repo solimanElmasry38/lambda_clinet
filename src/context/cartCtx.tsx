@@ -24,7 +24,6 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
 }) => {
   const [cartVisablity, setcartVisablity] = useState(false);
   const [cartItems, setCartItems] = useState<items[]>([]);
-  
 
   const cartQuantity = 9;
 

@@ -22,7 +22,7 @@ export const App = () => {
           <Route
             index
             element={
-              <React.Suspense fallback={<Spinner/>}>
+              <React.Suspense fallback={<Spinner />}>
                 <Home />
               </React.Suspense>
             }
@@ -31,11 +31,7 @@ export const App = () => {
         <Route
           path="/login"
           element={
-            <React.Suspense
-              fallback={
-                <Spinner/>
-              }
-            >
+            <React.Suspense fallback={<Spinner />}>
               <Login />
             </React.Suspense>
           }
@@ -43,7 +39,7 @@ export const App = () => {
         <Route
           path="/signup"
           element={
-            <React.Suspense fallback={<Spinner/>}>
+            <React.Suspense fallback={<Spinner />}>
               <Signup />
             </React.Suspense>
           }
@@ -51,7 +47,7 @@ export const App = () => {
         <Route
           path="/verify"
           element={
-            <React.Suspense fallback={<Spinner/>}>
+            <React.Suspense fallback={<Spinner />}>
               <VerifyEmail />
             </React.Suspense>
           }

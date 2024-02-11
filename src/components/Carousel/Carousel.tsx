@@ -4,9 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { _GetOffers } from "../../gql/query/getOffers";
 
-
-export const Carousel = ({images}) => {
-  
+export const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState("left");
   const handleNext = () => {

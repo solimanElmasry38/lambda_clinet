@@ -1,9 +1,9 @@
 import "./ProductCard.scss";
-export const ProductCard = ({ data ,children}) => {
+export const ProductCard = ({ data, children }) => {
   //id
   //count
   // is_available,
-  const {  name, img, price,  desc } = data;
+  const { name, img, price, desc } = data;
 
   return (
     <div className="item-container">
@@ -27,9 +27,8 @@ export const ProductCard = ({ data ,children}) => {
         <sup>$</sup>
         {price}
       </p>
-    
+
       {children}
-    
     </div>
   );
 };
