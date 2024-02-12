@@ -4,7 +4,7 @@ import "./header.scss";
 import Cookies from "js-cookie";
 import { _GetUser } from "../../gql/query/getUser.gql";
 import { Spinner } from "../Spinner/Spinner";
-import { useCart } from "../../context/cartCtx";
+
 
 const logout = () => {
   Cookies.remove("lambda_usr_token");
@@ -22,7 +22,7 @@ export const Header = () => {
   if (loading) {
     return <Spinner />;
   }
-  const { cartVisablity, openCart, closeCart } = useCart();
+
   return (
     <header>
       <nav>
@@ -74,18 +74,11 @@ export const Header = () => {
               </li>
             </>
           )}
-          <li
-            className="cartIconContainer"
-            onClick={() => {
-              if (cartVisablity) {
-                closeCart();
-              } else {
-                openCart();
-              }
-            }}
-          >
+          <li className="cartIconContainer">
             <div className="cartIcon">
-              <i className="fa-solid fa-cart-shopping"></i>
+              <a href="/cart">
+                <i className="fa-solid fa-cart-shopping"></i>
+              </a>
             </div>
           </li>
         </ul>

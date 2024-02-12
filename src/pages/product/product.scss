@@ -1,0 +1,43 @@
+.productSec{
+    max-width:100%;
+    height: 100vh;
+    margin-top: 80px;
+    padding: 20px;
+    background-color: teal;
+    .productContainer{
+        width: 100%;
+        height: 65%;
+        background: rgb(144, 180, 180);
+    display: grid;
+    grid-template-columns: .8fr repeat(2,1.2fr);
+    gap:20px;
+        .prodImgContainer{
+            background: red;
+            grid-area: 0 / 0 / 1 / 1 ;
+            img{
+                width:100%;
+                height:50%;
+                aspect-ratio: 1/1;
+                // object-fit:cover;
+            }
+        }
+        
+        .prodNameContainer{
+            background: rgb(128, 109, 109);
+            grid-area:1 / 2/ 2/3;
+            display: grid;
+            grid-template-rows: .25fr .25fr .50fr;
+            .prodName{
+                grid-area: 1/1/2/2;
+
+            }.prodDesc{
+                grid-area: 3/1/4/2;
+
+            }
+        }
+        .prodPriceContainer{
+            background: rgb(75, 36, 36);
+            grid-area: 1/ 3 /2 / 4 ;
+        }
+    }
+}

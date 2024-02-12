@@ -3,17 +3,17 @@ import { CartItem } from "../CartItem/CartItem";
 import "./Cart.scss";
 
 interface Iprops {
-  isVisable: boolean;
+  
   removeProduct;
   cartItems;
 }
 
-export const Cart = ({ isVisable, cartItems}: Iprops) => {
+export const Cart = ({  cartItems}: Iprops) => {
   return (
     <>
       <div
         className="cartContainer"
-        style={{ display: isVisable ? "block" : "none" }}
+        style={{ display:  "block"  }}
       >
         <div className="cart">
           {cartItems.length < 1 ? (

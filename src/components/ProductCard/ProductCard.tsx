@@ -1,9 +1,9 @@
 import "./ProductCard.scss";
 export const ProductCard = ({ data, children }) => {
-  //id
+
   //count
   // is_available,
-  const { name, img, price, desc } = data;
+  const {id, name, img, price, desc } = data;
 
   return (
     <div className="item-container">
@@ -14,7 +14,12 @@ export const ProductCard = ({ data, children }) => {
           style={{ width: "200px", height: "200px", objectFit: "cover" }}
         />
       </div>
-      <h2 className="item-heading">{name}</h2>
+      <h2 className="item-heading">
+        <a href={`/products/${id}`}>
+
+        {name}
+        </a>
+        </h2>
       <p className="item-description">{desc}</p>
       <ul className="rating">
         <i className="fa-solid fa-star"></i>

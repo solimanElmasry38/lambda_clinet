@@ -5,23 +5,14 @@ import { _GetOffers } from "../../gql/query/getOffers";
 import Cookies from "js-cookie";
 import { _GetProducts } from "../../gql/query/getPoducts.gql";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
-
 import { useCart } from "../../context/cartCtx";
-
 import { _GetProduct } from "../../gql/query/getProduct.gql";
-import { Cart } from "../../components/Cart/Cart";
 import { Spinner } from "../../components/Spinner/Spinner";
 
 const Home = () => {
   const images: string[] = [];
 
-  const {
-    addToCart,
-    removeFromCart,
-    cartVisablity,
-
-    cartItems,
-  } = useCart();
+  const { addToCart } = useCart();
 
   const offersQuery = useQuery(_GetOffers, {
     variables: {
@@ -67,11 +58,6 @@ const Home = () => {
               </ProductCard>
             </div>
           ))}
-          <Cart
-            isVisable={cartVisablity}
-            removeProduct={removeFromCart}
-            cartItems={cartItems}
-          />
         </div>
       </section>
     </>

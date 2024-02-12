@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 
 interface items {
   id: string;
@@ -7,24 +7,27 @@ interface items {
 interface IcartCTX {
   cartItems: items[];
   cartQuantity: number;
-  cartVisablity: boolean;
   itemQuantity: () => number;
   removeFromCart: (id: string) => void;
   decreaseItemQuantity: (id: string) => void;
   addToCart: (id: string) => void;
-  openCart: () => void;
-  closeCart: () => void;
 }
 const cartCTX = createContext<IcartCTX>({} as IcartCTX);
+
+
+const initialCartItems = localStorage.getItem("shopping-cart")
+  ? JSON.parse(localStorage.getItem("shopping-cart"))
+  : [];
 interface ShoppingCartProviderProps {
   children: React.ReactNode;
 }
 export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
   children,
 }) => {
-  const [cartVisablity, setcartVisablity] = useState(false);
-  const [cartItems, setCartItems] = useState<items[]>([]);
-
+  const [cartItems, setCartItems] = useState<items[]>(initialCartItems);
+  useEffect(() => {
+    localStorage.setItem("shopping-cart", JSON.stringify(cartItems));
+  }, [cartItems]);
   const cartQuantity = 9;
 
   const itemQuantity = () => {
@@ -72,14 +75,6 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
     });
   };
 
-  const openCart = () => {
-    setcartVisablity(true);
-  };
-
-  const closeCart = () => {
-    setcartVisablity(false);
-  };
-
   return (
     <cartCTX.Provider
       value={{
@@ -88,9 +83,7 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
         cartItems,
         removeFromCart,
         addToCart,
-        openCart,
-        closeCart,
-        cartVisablity,
+
         decreaseItemQuantity,
       }}
     >
