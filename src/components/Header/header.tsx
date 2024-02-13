@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 import { _GetUser } from "../../gql/query/getUser.gql";
 import { Spinner } from "../Spinner/Spinner";
 
-
 const logout = () => {
   Cookies.remove("lambda_usr_token");
   location.reload();

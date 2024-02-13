@@ -1,3 +1,4 @@
+import Rating from "../Rating/rating";
 import "./ProductCard.scss";
 export const ProductCard = ({ data, children }) => {
 
@@ -21,13 +22,14 @@ export const ProductCard = ({ data, children }) => {
         </a>
         </h2>
       <p className="item-description">{desc}</p>
-      <ul className="rating">
+      <Rating/>
+      {/* <ul className="rating">
         <i className="fa-solid fa-star"></i>
         <i className="fa-solid fa-star"></i>
         <i className="fa-solid fa-star"></i>
         <i className="fa-solid fa-star"></i>
         <i className="fa-solid fa-star-half-stroke"></i>
-      </ul>
+      </ul> */}
       <p className="item-price">
         <sup>$</sup>
         {price}
