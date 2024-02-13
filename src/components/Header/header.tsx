@@ -29,10 +29,7 @@ export const Header = () => {
           <img src={Logo} alt="" />
           <h2>lambda</h2>
         </a>
-        <form action="" className="search" method="GET">
-          <input type="text" name="" id="search" />
-          <button className="submit"></button>
-        </form>
+
         <ul>
           <li>
             <a className="nav_btn" href="">

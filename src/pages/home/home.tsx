@@ -8,6 +8,7 @@ import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { useCart } from "../../context/cartCtx";
 import { _GetProduct } from "../../gql/query/getProduct.gql";
 import { Spinner } from "../../components/Spinner/Spinner";
+import { SubHeader } from "../../components/SubHeader/SubHeader";
 
 const Home = () => {
   const images: string[] = [];
@@ -37,6 +38,8 @@ const Home = () => {
 
   return (
     <>
+      <SubHeader />
+
       <section className="homeSec">
         <div className="slider">
           <Carousel images={images} />
