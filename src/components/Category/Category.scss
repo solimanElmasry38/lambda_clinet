@@ -1,13 +1,16 @@
-.categoryBtn {
-  padding: 10px;
-  height: 100%;
-  background: transparent;
-  font-weight: 700;
-  text-transform: capitalize;
-  font-size: 15px;
-  transition: 0.5s;
-  cursor: pointer;
-  &:hover {
-    background: #6679d1;
+ul{
+  display: flex;
+  .categoryBtn {
+    padding: 10px;
+    height: 100%;
+    background: transparent;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 15px;
+    transition: 0.5s;
+    cursor: pointer;
+    &:hover {
+      background: #6679d1;
+    }
   }
 }
