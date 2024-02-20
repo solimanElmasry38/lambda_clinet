@@ -5,7 +5,7 @@ function Category({
   categoryName,
   onCategoryChange,
   categoryRef,
-  queryRef,
+
   ProductsQueryFunc,
   categoryId,
 }) {
