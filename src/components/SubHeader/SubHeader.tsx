@@ -3,14 +3,15 @@ import Category from "../Category/Category";
 import { useQuery } from "@apollo/client";
 import Cookies from "js-cookie";
 import { _GetCategorys } from "../../gql/query/getCategorys";
-import { Key } from "react";
+
 export const SubHeader = ({
+  categoryRef,
   queryRef,
   onInputChange,
-  func,
-  categoryRef,
+  ProductsQueryFunc,
   onCategoryChange,
 }) => {
+  // console.log(queryRef.current.value)
   const { data, loading } = useQuery(_GetCategorys, {
     variables: {
       input: {
@@ -23,12 +24,14 @@ export const SubHeader = ({
     return "loading";
   }
 
+
   return (
     <div className="subHeader">
       <form action="" className="search" method="GET">
         <input
-          type="text"
+          type="search"
           name=""
+          // value={empty}
           id="search"
           ref={queryRef}
           onChange={(e) => onInputChange(e.target.value)}
@@ -36,16 +39,19 @@ export const SubHeader = ({
         <button
           className="submit"
           type="button"
-          onClick={() =>
-            func({
+          onClick={() =>{
+            console.log("clicked")
+
+            ProductsQueryFunc({
               variables: {
                 input: {
-                  byCategory: "7e12a7bd-bac4-48c1-b47a-425d485452eb",
+                  // byCategory:categoryRef.current,
                   filter: queryRef.current,
                   orderByName: "asc",
                 },
               },
             })
+}
           }
         >
           <i className="fa-solid fa-magnifying-glass"></i>
@@ -58,8 +64,11 @@ export const SubHeader = ({
               categoryName={cat.name}
               categoryId={cat.id}
               onCategoryChange={onCategoryChange}
+              // categoryRef={categoryRef}
               categoryRef={categoryRef}
+              queryRef={queryRef}
               key={cat.name}
+              ProductsQueryFunc={ProductsQueryFunc}
             />
           )
         )}

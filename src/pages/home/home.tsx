@@ -13,17 +13,16 @@ import { useEffect, useRef } from "react";
 
 const Home = () => {
   const images: string[] = [];
-  // const [query,setQuery]=useState('');
+
   const queryRef = useRef("");
   const categoryRef = useRef("");
 
   const onInputChange = (val) => {
     queryRef.current = val;
-    console.log(queryRef);
   };
   const onCategoryChange = (val) => {
     categoryRef.current = val;
-    console.log(categoryRef);
+    console.log(categoryRef.current);
   };
   const { addToCart } = useCart();
 
@@ -42,25 +41,11 @@ const Home = () => {
     });
   }
 
-  // const ProductsQuery = useQuery(_GetProducts, {
-  //   variables: {
-  //     input: {
-  //       byCategory: "7e12a7bd-bac4-48c1-b47a-425d485452eb",
-  //       filter: queryRef.current ,
-  //       orderByName: "asc",
-  //     },
-  //   },
-  // });
-
-  const [func, ProductsQuery] = useLazyQuery(_GetProducts);
+  const [ProductsQueryFunc, ProductsQuery] = useLazyQuery(_GetProducts);
   useEffect(() => {
-    func({
+    ProductsQueryFunc({
       variables: {
-        input: {
-          byCategory: categoryRef.current,
-          filter: queryRef.current,
-          orderByName: "asc",
-        },
+        input: {},
       },
     });
   }, []);
@@ -81,7 +66,7 @@ const Home = () => {
         onInputChange={onInputChange}
         onCategoryChange={onCategoryChange}
         categoryRef={categoryRef}
-        func={func}
+        ProductsQueryFunc={ProductsQueryFunc}
       />
 
       <section className="homeSec">
