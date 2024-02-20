@@ -3,14 +3,19 @@ import Category from "../Category/Category";
 import { useQuery } from "@apollo/client";
 import Cookies from "js-cookie";
 import { _GetCategorys } from "../../gql/query/getCategorys";
+import { useSearch } from "../../context/searchCtx";
 
 export const SubHeader = ({
-  categoryRef,
-  queryRef,
-  onInputChange,
+  // categoryRef,
+  // queryRef,
+  // onInputChange,
+  // onCategoryChange,
   ProductsQueryFunc,
-  onCategoryChange,
 }) => {
+  const {queryRef,
+    
+    onInputChange,
+   }=useSearch();
   // console.log(queryRef.current.value)
   const { data, loading } = useQuery(_GetCategorys, {
     variables: {
@@ -63,10 +68,10 @@ export const SubHeader = ({
             <Category
               categoryName={cat.name}
               categoryId={cat.id}
-              onCategoryChange={onCategoryChange}
+              // onCategoryChange={onCategoryChange}//
               // categoryRef={categoryRef}
-              categoryRef={categoryRef}
-              queryRef={queryRef}
+              // categoryRef={categoryRef}
+              // queryRef={queryRef}
               key={cat.name}
               ProductsQueryFunc={ProductsQueryFunc}
             />

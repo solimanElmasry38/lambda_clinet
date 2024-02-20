@@ -9,21 +9,22 @@ import { useCart } from "../../context/cartCtx";
 import { _GetProduct } from "../../gql/query/getProduct.gql";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { SubHeader } from "../../components/SubHeader/SubHeader";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+
 
 const Home = () => {
   const images: string[] = [];
 
-  const queryRef = useRef("");
-  const categoryRef = useRef("");
+  // const queryRef = useRef("");
+  // const categoryRef = useRef("");
 
-  const onInputChange = (val) => {
-    queryRef.current = val;
-  };
-  const onCategoryChange = (val) => {
-    categoryRef.current = val;
-    console.log(categoryRef.current);
-  };
+  // const onInputChange = (val) => {
+  //   queryRef.current = val;
+  // };
+  // const onCategoryChange = (val) => {
+  //   categoryRef.current = val;
+  //   console.log(categoryRef.current);
+  // };
   const { addToCart } = useCart();
 
   const offersQuery = useQuery(_GetOffers, {
@@ -60,12 +61,15 @@ const Home = () => {
   }
   return (
     <>
+
+
+
       {/* <SubHeader onChangeFunc={setQuery} query={query}/> */}
       <SubHeader
-        queryRef={queryRef}
-        onInputChange={onInputChange}
-        onCategoryChange={onCategoryChange}
-        categoryRef={categoryRef}
+        // queryRef={queryRef}
+        // categoryRef={categoryRef}
+        // onInputChange={onInputChange}
+        // onCategoryChange={onCategoryChange}
         ProductsQueryFunc={ProductsQueryFunc}
       />
 

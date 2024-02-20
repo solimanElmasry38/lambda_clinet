@@ -1,14 +1,20 @@
 import React from "react";
 import "./Category.scss";
+import { useSearch } from "../../context/searchCtx";
 
 function Category({
   categoryName,
-  onCategoryChange,
-  categoryRef,
+  // onCategoryChange,
+  // categoryRef,
 
   ProductsQueryFunc,
   categoryId,
 }) {
+  const {
+    // queryRef,
+    categoryRef,
+    // onInputChange,
+    onCategoryChange,}=useSearch();
   return (
     <li
       className="categoryBtn"
