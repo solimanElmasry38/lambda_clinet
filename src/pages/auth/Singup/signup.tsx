@@ -1,52 +1,46 @@
-import { GlassOverLay } from "../../../components/GlassOverLay/overLay";
-import Cookies from "js-cookie";
-import "./signup.scss";
-import "../auth.scss";
-import { _CreateUser } from "../../../gql/mutation/createUser.gql";
-import { useMutation } from "@apollo/client";
-import { Link } from "react-router-dom";
-import post from "axios";
-import { LazyBackground } from "../../../components/lazy";
+import { GlassOverLay } from '../../../components/GlassOverLay/overLay';
+import Cookies from 'js-cookie';
+import './signup.scss';
+import '../auth.scss';
+import { _CreateUser } from '../../../gql/mutation/createUser.gql';
+import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
+import post from 'axios';
+import { LazyBackground } from '../../../components/lazy';
 
-import { useState } from "react";
-import { Randshapes } from "../../../components/Randshapes/rand_shapes";
+import { useState } from 'react';
+import { Randshapes } from '../../../components/Randshapes/rand_shapes';
 
 const Signup = () => {
-  const [username, setusername] = useState("");
-  const [email, setemail] = useState("");
-  const [pass, setpass] = useState("");
+  const [username, setusername] = useState('');
+  const [email, setemail] = useState('');
+  const [pass, setpass] = useState('');
   const [USER_CREATE, { error }] = useMutation(_CreateUser);
 
   const handelSubmit = async () => {
-    try {
-      await USER_CREATE({
-        variables: {
-          input: {
-            user_name: username,
-            img: "solyimag",
-            email: email,
-            password: pass,
-          },
-        },
-      }).then((res) => {
-        Cookies.set("lambda_usr_id", res.data.USER_CREATE.id);
-      });
-      location.replace("/verify");
-    } catch (err) {
-      throw err;
-    }
+    await USER_CREATE({
+      variables: {
+        input: {
+          user_name: username,
+          img: 'solyimag',
+          email: email,
+          password: pass
+        }
+      }
+    }).then((res) => {
+      Cookies.set('lambda_usr_id', res.data.USER_CREATE.id);
+    });
+    location.replace('/verify');
   };
 
   const h = async () => {
-    await post("http://127.0.0.1:8888/auth/github/callback")
+    await post('http://127.0.0.1:8888/auth/github/callback')
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
   return (
     <LazyBackground
-      src={
-        "https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826804/yv11nhvro6ia0yxrinwc.jpg"
-      }
+      src={'https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826804/yv11nhvro6ia0yxrinwc.jpg'}
     >
       <Randshapes />
       <GlassOverLay>
@@ -82,18 +76,18 @@ const Signup = () => {
           <p className="or">or</p>
           <div className="social">
             <Link
-              to={"http://localhost:8888/auth/github"}
+              to={'http://localhost:8888/auth/github'}
               className="fa-brands fa-github gitIcon"
               onClick={() => h()}
             ></Link>
 
             <Link
-              to={"http://localhost:8888/auth/github"}
+              to={'http://localhost:8888/auth/github'}
               className="fa-brands fa-google googleIcon"
             ></Link>
 
             <Link
-              to={"http://localhost:8888/auth/github"}
+              to={'http://localhost:8888/auth/github'}
               className="fa-brands fa-facebook faceIcon"
             ></Link>
           </div>

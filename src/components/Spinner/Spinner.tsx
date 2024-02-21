@@ -1,8 +1,8 @@
-import './Spinner.scss'
+import './Spinner.scss';
 export const Spinner = () => {
-    return (
-        <div className="load">
-        <span className="loader"></span>
-      </div>
-    );
-  };
+  return (
+    <div className="load">
+      <span className="loader"></span>
+    </div>
+  );
+};

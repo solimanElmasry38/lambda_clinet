@@ -1,22 +1,22 @@
-import { useQuery } from "@apollo/client";
-import Logo from "../../assets/logo.png";
-import "./header.scss";
-import Cookies from "js-cookie";
-import { _GetUser } from "../../gql/query/getUser.gql";
-import { Spinner } from "../Spinner/Spinner";
+import { useQuery } from '@apollo/client';
+import Logo from '../../assets/logo.png';
+import './header.scss';
+import Cookies from 'js-cookie';
+import { _GetUser } from '../../gql/query/getUser.gql';
+import { Spinner } from '../Spinner/Spinner';
 
 const logout = () => {
-  Cookies.remove("lambda_usr_token");
+  Cookies.remove('lambda_usr_token');
   location.reload();
 };
 export const Header = () => {
   const { data, loading } = useQuery(_GetUser, {
     variables: {
       input: {
-        id: Cookies.get("lambda_usr_id"),
-        token: Cookies.get("lambda_usr_token"),
-      },
-    },
+        id: Cookies.get('lambda_usr_id'),
+        token: Cookies.get('lambda_usr_token')
+      }
+    }
   });
   if (loading) {
     return <Spinner />;
@@ -37,7 +37,7 @@ export const Header = () => {
             </a>
           </li>
 
-          {Cookies.get("lambda_usr_token") ? (
+          {Cookies.get('lambda_usr_token') ? (
             <>
               <li>
                 <span className="nav_btn" onClick={logout}>
@@ -46,12 +46,7 @@ export const Header = () => {
               </li>
 
               {data ? (
-                <img
-                  src={data.USER_GET.img}
-                  alt=""
-                  loading="lazy"
-                  className="profile"
-                />
+                <img src={data.USER_GET.img} alt="" loading="lazy" className="profile" />
               ) : (
                 <span></span>
               )}

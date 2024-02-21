@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext, useEffect } from "react";
+import React, { useState, createContext, useContext, useEffect } from 'react';
 
 interface items {
   id: string;
@@ -14,19 +14,16 @@ interface IcartCTX {
 }
 const cartCTX = createContext<IcartCTX>({} as IcartCTX);
 
-
-const initialCartItems = localStorage.getItem("shopping-cart")
-  ? JSON.parse(localStorage.getItem("shopping-cart"))
+const initialCartItems = localStorage.getItem('shopping-cart')
+  ? JSON.parse(localStorage.getItem('shopping-cart'))
   : [];
 interface ShoppingCartProviderProps {
   children: React.ReactNode;
 }
-export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
-  children,
-}) => {
+export const CartProvider: React.FC<ShoppingCartProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = useState<items[]>(initialCartItems);
   useEffect(() => {
-    localStorage.setItem("shopping-cart", JSON.stringify(cartItems));
+    localStorage.setItem('shopping-cart', JSON.stringify(cartItems));
   }, [cartItems]);
   const cartQuantity = 9;
 
@@ -57,11 +54,11 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
   const addToCart = (id: string) => {
     setCartItems((currItem): items[] => {
       if (currItem.find((item) => item.id === id) == null) {
-        console.log("add to cart firs time" + JSON.stringify(cartItems));
+        console.log('add to cart firs time' + JSON.stringify(cartItems));
         return [...currItem, { id, quantity: 1 }];
       } else {
         return currItem.map((item) => {
-          console.log("add to carrt second" + JSON.stringify(cartItems));
+          console.log('add to carrt second' + JSON.stringify(cartItems));
 
           if (item.id === id) {
             return { ...item, quantity: item.quantity + 1 };
@@ -84,7 +81,7 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({
         removeFromCart,
         addToCart,
 
-        decreaseItemQuantity,
+        decreaseItemQuantity
       }}
     >
       {children}

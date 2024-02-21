@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import "./rating.scss";
-function Rating() {
+import React, { useState } from 'react';
+import './rating.scss';
+function Rating({ productId }) {
   const [rating, setRating] = useState<null | number>(null);
   const [hover, setHover] = useState<null | number>(null);
   const totalStars = 5;
   return [...Array(totalStars)].map((_star, index) => {
     const currentRating = index + 1;
-
     return (
       <label key={index}>
         <input
@@ -18,7 +17,7 @@ function Rating() {
         <span
           className="star"
           style={{
-            color: currentRating <= (hover || rating!) ? "#ffc107" : "#e4e5e9",
+            color: currentRating <= (hover || rating!) ? '#ffc107' : '#e4e5e9'
           }}
           onMouseEnter={() => setHover(currentRating)}
           onMouseLeave={() => setHover(null)}

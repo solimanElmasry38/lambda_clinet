@@ -1,7 +1,7 @@
-import { useQuery } from "@apollo/client";
-import { _GetProduct } from "../../gql/query/getProduct.gql";
-import { useCart } from "../../context/cartCtx";
-import { Spinner } from "../Spinner/Spinner";
+import { useQuery } from '@apollo/client';
+import { _GetProduct } from '../../gql/query/getProduct.gql';
+import { useCart } from '../../context/cartCtx';
+import { Spinner } from '../Spinner/Spinner';
 
 type Iprop = {
   id: string;
@@ -13,9 +13,9 @@ export const CartItem = ({ id, quantity }: Iprop) => {
   const { data, loading } = useQuery(_GetProduct, {
     variables: {
       input: {
-        id,
-      },
-    },
+        id
+      }
+    }
   });
   if (loading) {
     return <Spinner />;
@@ -23,11 +23,7 @@ export const CartItem = ({ id, quantity }: Iprop) => {
 
   return (
     <div className="cartProdContainer">
-      <img
-        className="productImage"
-        src={data.PRODUCT_GET.img}
-        alt={data.PRODUCT_GET.name}
-      />
+      <img className="productImage" src={data.PRODUCT_GET.img} alt={data.PRODUCT_GET.name} />
       <div className="price">
         <p className="productName">{data.PRODUCT_GET.name}</p>
         <p className="productPrice">

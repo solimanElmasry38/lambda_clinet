@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 export function LazyBackground({ src, children }) {
-  const [source, setSource] = useState(
-    "https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826801/ayyu8kxpzoluaqo0dn8k.jpg"
+  const [_source, setSource] = useState(
+    'https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826801/ayyu8kxpzoluaqo0dn8k.jpg'
   );
 
   useEffect(() => {
@@ -12,9 +12,7 @@ export function LazyBackground({ src, children }) {
   }, [src]);
 
   return (
-    <div
-      className="authContainer" /*style={{ backgroundImage: `url(${source})` }}*/
-    >
+    <div className="authContainer" /*style={{ backgroundImage: `url(${source})` }}*/>
       {children}
     </div>
   );

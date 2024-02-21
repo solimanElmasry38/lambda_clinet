@@ -1,6 +1,6 @@
-import React from "react";
-import "./Category.scss";
-import { useSearch } from "../../context/searchCtx";
+import React from 'react';
+import './Category.scss';
+import { useSearch } from '../../context/searchCtx';
 
 function Category({
   categoryName,
@@ -8,13 +8,14 @@ function Category({
   // categoryRef,
 
   ProductsQueryFunc,
-  categoryId,
+  categoryId
 }) {
   const {
     // queryRef,
     categoryRef,
     // onInputChange,
-    onCategoryChange,}=useSearch();
+    onCategoryChange
+  } = useSearch();
   return (
     <li
       className="categoryBtn"
@@ -26,9 +27,9 @@ function Category({
             input: {
               byCategory: categoryRef.current,
               // filter: queryRef.current,
-              orderByName: "asc",
-            },
-          },
+              orderByName: 'asc'
+            }
+          }
         });
       }}
     >

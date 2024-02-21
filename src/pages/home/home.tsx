@@ -1,16 +1,14 @@
-import "./home.scss";
-import { Carousel } from "../../components/Carousel/Carousel";
-import { useLazyQuery, useQuery } from "@apollo/client";
-import { _GetOffers } from "../../gql/query/getOffers";
-import Cookies from "js-cookie";
-import { _GetProducts } from "../../gql/query/getPoducts.gql";
-import { ProductCard } from "../../components/ProductCard/ProductCard";
-import { useCart } from "../../context/cartCtx";
-import { _GetProduct } from "../../gql/query/getProduct.gql";
-import { Spinner } from "../../components/Spinner/Spinner";
-import { SubHeader } from "../../components/SubHeader/SubHeader";
-import { useEffect } from "react";
-
+import './home.scss';
+import { Carousel } from '../../components/Carousel/Carousel';
+import { useLazyQuery, useQuery } from '@apollo/client';
+import { _GetOffers } from '../../gql/query/getOffers';
+import Cookies from 'js-cookie';
+import { _GetProducts } from '../../gql/query/getPoducts.gql';
+import { ProductCard } from '../../components/ProductCard/ProductCard';
+import { useCart } from '../../context/cartCtx';
+import { Spinner } from '../../components/Spinner/Spinner';
+import { SubHeader } from '../../components/SubHeader/SubHeader';
+import { useEffect } from 'react';
 
 const Home = () => {
   const images: string[] = [];
@@ -30,10 +28,10 @@ const Home = () => {
   const offersQuery = useQuery(_GetOffers, {
     variables: {
       input: {
-        usr_id: Cookies.get("lambda_usr_id"),
-        usr_token: Cookies.get("lambda_usr_token"),
-      },
-    },
+        usr_id: Cookies.get('lambda_usr_id'),
+        usr_token: Cookies.get('lambda_usr_token')
+      }
+    }
   });
   if (!offersQuery.loading) {
     const arr = offersQuery.data.OFFERS_GET;
@@ -46,10 +44,10 @@ const Home = () => {
   useEffect(() => {
     ProductsQueryFunc({
       variables: {
-        input: {},
-      },
+        input: {}
+      }
     });
-  }, []);
+  });
   if (ProductsQuery.loading) {
     return <Spinner />;
   }
@@ -61,9 +59,6 @@ const Home = () => {
   }
   return (
     <>
-
-
-
       {/* <SubHeader onChangeFunc={setQuery} query={query}/> */}
       <SubHeader
         // queryRef={queryRef}
@@ -83,10 +78,7 @@ const Home = () => {
               <div key={product.id}>
                 <ProductCard data={product}>
                   {product.is_available ? (
-                    <button
-                      className="item-cart-btn"
-                      onClick={() => addToCart(product.id)}
-                    >
+                    <button className="item-cart-btn" onClick={() => addToCart(product.id)}>
                       Add To Cart
                     </button>
                   ) : (

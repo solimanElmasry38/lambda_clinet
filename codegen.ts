@@ -1,14 +1,12 @@
-
-import type { CodegenConfig } from '@graphql-codegen/cli';
+import { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  overwrite: true,
-  schema: "http://localhost:8888/graphql",
-  documents: "src/gql/mutation.createUser.gql.ts",
+  schema: 'http://localhost:8888/graphql',
+  documents: ['src/**/*.tsx'],
+  ignoreNoDocuments: true, // for better experience with the watcher
   generates: {
-    "src/gql/": {
-      preset: "client",
-      plugins: []
+    './src/gql/__CodeGen__/': {
+      preset: 'client'
     }
   }
 };

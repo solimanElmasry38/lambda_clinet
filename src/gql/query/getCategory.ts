@@ -1,20 +1,19 @@
-
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const _GetCategory = gql`
-query GET_CATEGORY($input: CategInp) {
-  GET_CATEGORY(input: $input) {
-    name
-    id
-    product {
-      id
+  query GET_CATEGORY($input: CategInp) {
+    GET_CATEGORY(input: $input) {
       name
-      img
-      price
-      count
-      is_available
-      desc
+      id
+      product {
+        id
+        name
+        img
+        price
+        count
+        is_available
+        desc
+      }
     }
   }
-}
 `;
