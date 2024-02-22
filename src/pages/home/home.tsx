@@ -47,7 +47,7 @@ const Home = () => {
         input: {}
       }
     });
-  });
+  },[]);
   if (ProductsQuery.loading) {
     return <Spinner />;
   }
