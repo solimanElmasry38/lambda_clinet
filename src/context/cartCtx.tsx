@@ -15,8 +15,9 @@ interface IcartCTX {
 const cartCTX = createContext<IcartCTX>({} as IcartCTX);
 
 const initialCartItems = localStorage.getItem('shopping-cart')
-  ? JSON.parse(localStorage.getItem('shopping-cart'))
+  ? JSON.parse(localStorage.getItem('shopping-cart')!)
   : [];
+
 interface ShoppingCartProviderProps {
   children: React.ReactNode;
 }
@@ -68,7 +69,7 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({ children }) 
         });
       }
 
-      // console.log("final "+JSON.stringify(cartItems));
+    
     });
   };
 

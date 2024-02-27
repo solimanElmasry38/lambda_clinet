@@ -4,20 +4,13 @@ import { useQuery } from '@apollo/client';
 import Cookies from 'js-cookie';
 import { _GetCategorys } from '../../gql/query/getCategorys';
 import { useSearch } from '../../context/searchCtx';
+import { useNavigate } from 'react-router-dom';
 
-export const SubHeader = ({
-  // categoryRef,
-  // queryRef,
-  // onInputChange,
-  // onCategoryChange,
-  ProductsQueryFunc
-}) => {
-  const {
-    queryRef,
+export const SubHeader = ({}) => {
+  const navigate = useNavigate();
 
-    onInputChange
-  } = useSearch();
-  // console.log(queryRef.current.value)
+  const { queryRef, onInputChange } = useSearch();
+
   const { data, loading } = useQuery(_GetCategorys, {
     variables: {
       input: {
@@ -36,26 +29,16 @@ export const SubHeader = ({
         <input
           type="search"
           name=""
-          // value={empty}
+          value={queryRef}
           id="search"
-          ref={queryRef}
+          placeholder="Search...."
           onChange={(e) => onInputChange(e.target.value)}
         />
         <button
           className="submit"
-          type="button"
+         
           onClick={() => {
-            console.log('clicked');
-
-            ProductsQueryFunc({
-              variables: {
-                input: {
-                  // byCategory:categoryRef.current,
-                  filter: queryRef.current,
-                  orderByName: 'asc'
-                }
-              }
-            });
+            navigate('/search');
           }}
         >
           <i className="fa-solid fa-magnifying-glass"></i>
@@ -66,12 +49,9 @@ export const SubHeader = ({
           <Category
             categoryName={cat.name}
             categoryId={cat.id}
-            // onCategoryChange={onCategoryChange}//
-            // categoryRef={categoryRef}
-            // categoryRef={categoryRef}
-            // queryRef={queryRef}
+          
             key={cat.name}
-            ProductsQueryFunc={ProductsQueryFunc}
+       
           />
         ))}
       </ul>

@@ -2,38 +2,29 @@ import React from 'react';
 import './Category.scss';
 import { useSearch } from '../../context/searchCtx';
 
+import { _GetProducts } from '../../gql/query/getPoducts.gql';
+import { useNavigate } from 'react-router-dom';
+
 function Category({
   categoryName,
-  // onCategoryChange,
-  // categoryRef,
 
-  ProductsQueryFunc,
   categoryId
 }) {
-  const {
-    // queryRef,
-    categoryRef,
-    // onInputChange,
-    onCategoryChange
-  } = useSearch();
+  const { onCategoryChange } = useSearch();
+
+  const navigate = useNavigate();
+
   return (
     <li
       className="categoryBtn"
       onClick={() => {
+        navigate('/search');
         onCategoryChange(categoryId);
-
-        ProductsQueryFunc({
-          variables: {
-            input: {
-              byCategory: categoryRef.current,
-              // filter: queryRef.current,
-              orderByName: 'asc'
-            }
-          }
-        });
       }}
     >
       {categoryName}
+
+      
     </li>
   );
 }

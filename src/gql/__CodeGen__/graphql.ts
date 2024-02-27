@@ -87,6 +87,8 @@ export type MutationVerify_EmailArgs = {
   input?: InputMaybe<VerifyInp>;
 };
 
+
+
 export type Offer = {
   __typename?: 'Offer';
   id?: Maybe<Scalars['ID']['output']>;

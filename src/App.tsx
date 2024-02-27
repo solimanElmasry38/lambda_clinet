@@ -7,6 +7,8 @@ import { Spinner } from './components/Spinner/Spinner';
 import { useCart } from './context/cartCtx';
 import { Cart } from './components/Cart/Cart';
 import Product from './pages/product/product';
+import Search from './pages/search/search';
+import { SubHeader } from './components/SubHeader/SubHeader';
 const VerifyEmail = React.lazy(() => import('./pages/auth/verifyEmail/verifyEmail'));
 const Signup = React.lazy(() => import('./pages/auth/Singup/signup'));
 const Login = React.lazy(() => import('./pages/auth/Login/login'));
@@ -22,6 +24,7 @@ export const App = () => {
   return (
     <>
       <Header />
+      <SubHeader />
       <Routes>
         <Route element={<PrivateRoutes />}>
           <Route
@@ -42,7 +45,14 @@ export const App = () => {
             </React.Suspense>
           }
         />
-
+        <Route
+          path="search"
+          element={
+            <React.Suspense fallback={<Spinner />}>
+              <Search />
+            </React.Suspense>
+          }
+        />
         <Route
           path="products/:prod_id"
           element={
