@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Category.scss';
 import { useSearch } from '../../context/searchCtx';
 
@@ -7,19 +7,22 @@ import { useNavigate } from 'react-router-dom';
 
 function Category({
   categoryName,
-
-  categoryId
+  isSelected,
+  categoryId,
+  onCategoryChanges
 }) {
   const { onCategoryChange } = useSearch();
-
   const navigate = useNavigate();
 
   return (
     <li
-      className="categoryBtn"
+    className={`categoryBtn ${isSelected ? 'selected' : ''}`}
+    
+     
       onClick={() => {
         navigate('/search');
         onCategoryChange(categoryId);
+        onCategoryChanges(categoryId)
       }}
     >
       {categoryName}

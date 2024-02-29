@@ -3,14 +3,18 @@ import Category from '../Category/Category';
 import { useQuery } from '@apollo/client';
 import Cookies from 'js-cookie';
 import { _GetCategorys } from '../../gql/query/getCategorys';
-import { useSearch } from '../../context/searchCtx';
-import { useNavigate } from 'react-router-dom';
+
 import SearchBar from '../SearchBar/SearchBar';
+import { useEffect, useState } from 'react';
 
 export const SubHeader = ({}) => {
-  const navigate = useNavigate();
-
-  const { queryRef, onInputChange } = useSearch();
+  const initialSelectedCategory = localStorage.getItem('selected-category')
+  ? localStorage.getItem('selected-category')
+  : '';
+  const [selectedCategoryId, setSelectedCategoryId] = useState(initialSelectedCategory);
+  useEffect(() => {
+    localStorage.setItem('selected-category', selectedCategoryId!);
+  }, [selectedCategoryId]);
 
   const { data, loading } = useQuery(_GetCategorys, {
     variables: {
@@ -23,24 +27,23 @@ export const SubHeader = ({}) => {
   if (loading) {
     return 'loading';
   }
+  const handleCategoryChange = (categoryId) => {
+    setSelectedCategoryId(categoryId);
+  };
 
   return (
     <div className="subHeader">
-      <form action="" className="search" method="GET">
-     
         <SearchBar/>
-        <button
-          className="submit"
-          onClick={() => {
-            navigate('/search');
-          }}
-        >
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </form>
+    
       <ul>
         {data.GET_CATEGORYS.map((cat) => (
-          <Category categoryName={cat.name} categoryId={cat.id} key={cat.name} />
+          <Category 
+          key={cat.id}
+          categoryName={cat.name}
+          categoryId={cat.id}
+          isSelected={cat.id === selectedCategoryId}
+          onCategoryChanges={handleCategoryChange}
+          />
         ))}
       </ul>
     </div>
