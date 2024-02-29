@@ -5,6 +5,7 @@ import { useCart } from '../../context/cartCtx';
 import { useQuery } from '@apollo/client';
 import { _GetProduct } from '../../gql/query/getProduct.gql';
 import { Spinner } from '../Spinner/Spinner';
+import Rating from '../Rating/rating';
 // import Rating from '../Rating/rating';
 function VerProductCard({ datas, IsCartProduct, children }) {
   const { id, quantity } = datas;
@@ -32,9 +33,10 @@ function VerProductCard({ datas, IsCartProduct, children }) {
           <a href={`/products/${id}`}>{data.PRODUCT_GET.name}</a>
         </h2>
         <p className="item-description">{data.PRODUCT_GET.desc}</p>
-        <div className="ReatingContainer">{/* <Rating productId={id} /> */}</div>
-        soliamn
-        {/* {    totalPrice} */}
+        <div className="ReatingContainer">
+          <Rating productId={id} />
+          </div>
+     
         {IsCartProduct ? (
           <p className="item-price">
             {data.PRODUCT_GET.price}$*
