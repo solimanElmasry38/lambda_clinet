@@ -48,6 +48,7 @@ header {
           cursor: pointer;
         }
         &.cartIconContainer {
+          position: relative;
           width: 20%;
           height: 70%;
           background: #313b66;
@@ -57,6 +58,7 @@ header {
           border: 1px solid #8e93f0;
           cursor: pointer;
           border-radius: 50%;
+          
           i {
             color: #8e93f0;
             font-size: 22px;

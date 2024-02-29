@@ -23,8 +23,6 @@ function Category({
       }}
     >
       {categoryName}
-
-      
     </li>
   );
 }

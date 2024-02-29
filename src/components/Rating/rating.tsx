@@ -28,8 +28,6 @@ function Rating({ productId }) {
         <input
           type="radio"
           name="rating"
-         
-
           value={currentRating}
           onChange={async () => {
             setRating(currentRating);

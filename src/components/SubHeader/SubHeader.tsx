@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { _GetCategorys } from '../../gql/query/getCategorys';
 import { useSearch } from '../../context/searchCtx';
 import { useNavigate } from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar';
 
 export const SubHeader = ({}) => {
   const navigate = useNavigate();
@@ -26,17 +27,10 @@ export const SubHeader = ({}) => {
   return (
     <div className="subHeader">
       <form action="" className="search" method="GET">
-        <input
-          type="search"
-          name=""
-          value={queryRef}
-          id="search"
-          placeholder="Search...."
-          onChange={(e) => onInputChange(e.target.value)}
-        />
+     
+        <SearchBar/>
         <button
           className="submit"
-         
           onClick={() => {
             navigate('/search');
           }}
@@ -46,13 +40,7 @@ export const SubHeader = ({}) => {
       </form>
       <ul>
         {data.GET_CATEGORYS.map((cat) => (
-          <Category
-            categoryName={cat.name}
-            categoryId={cat.id}
-          
-            key={cat.name}
-       
-          />
+          <Category categoryName={cat.name} categoryId={cat.id} key={cat.name} />
         ))}
       </ul>
     </div>

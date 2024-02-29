@@ -2,15 +2,20 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 
 interface items {
   id: string;
+  price:number;
   quantity: number;
 }
+
+
+
+
 interface IcartCTX {
   cartItems: items[];
   cartQuantity: number;
-  itemQuantity: () => number;
+
   removeFromCart: (id: string) => void;
   decreaseItemQuantity: (id: string) => void;
-  addToCart: (id: string) => void;
+  addToCart: (id: string,price:number) => void;
 }
 const cartCTX = createContext<IcartCTX>({} as IcartCTX);
 
@@ -26,11 +31,8 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({ children }) 
   useEffect(() => {
     localStorage.setItem('shopping-cart', JSON.stringify(cartItems));
   }, [cartItems]);
-  const cartQuantity = 9;
 
-  const itemQuantity = () => {
-    return 6;
-  };
+  const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
 
   const removeFromCart = (id: string) => {
     setCartItems((currItem) => currItem.filter((item) => item.id !== id));
@@ -52,15 +54,12 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({ children }) 
     });
   };
 
-  const addToCart = (id: string) => {
+  const addToCart = (id: string,price) => {
     setCartItems((currItem): items[] => {
       if (currItem.find((item) => item.id === id) == null) {
-        console.log('add to cart firs time' + JSON.stringify(cartItems));
-        return [...currItem, { id, quantity: 1 }];
+        return [...currItem, { id, quantity: 1 ,price}];
       } else {
         return currItem.map((item) => {
-          console.log('add to carrt second' + JSON.stringify(cartItems));
-
           if (item.id === id) {
             return { ...item, quantity: item.quantity + 1 };
           } else {
@@ -68,15 +67,12 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({ children }) 
           }
         });
       }
-
-    
     });
   };
 
   return (
     <cartCTX.Provider
       value={{
-        itemQuantity,
         cartQuantity,
         cartItems,
         removeFromCart,

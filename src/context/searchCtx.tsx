@@ -5,7 +5,6 @@ interface IsearchCtx {
   categoryRef;
   onInputChange: (val: string) => void;
   onCategoryChange: (val: string) => void;
-
 }
 const searchCtx = createContext<IsearchCtx>({} as IsearchCtx);
 
@@ -24,7 +23,6 @@ export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
   const [queryRef, setqueryRef] = useState(initialSearchQuery);
   const [categoryRef, setcategoryRef] = useState(initialCategoryQuery);
 
- 
   useEffect(() => {
     localStorage.setItem('category-query', categoryRef!);
   }, [categoryRef]);
@@ -33,13 +31,11 @@ export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
     localStorage.setItem('search-query', queryRef!);
   }, [queryRef]);
   const onInputChange = (val: string) => {
-
     setqueryRef(val);
   };
   const onCategoryChange = (val: string) => {
     setcategoryRef(val);
   };
-
 
   return (
     <searchCtx.Provider

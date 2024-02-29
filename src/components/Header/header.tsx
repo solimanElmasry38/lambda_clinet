@@ -4,6 +4,9 @@ import './header.scss';
 import Cookies from 'js-cookie';
 import { _GetUser } from '../../gql/query/getUser.gql';
 import { Spinner } from '../Spinner/Spinner';
+import { useCart } from '../../context/cartCtx';
+
+import ProuductsCartCount from '../ProuductsCartCount/ProuductsCartCount';
 
 const logout = () => {
   Cookies.remove('lambda_usr_token');
@@ -68,6 +71,7 @@ export const Header = () => {
           <li className="cartIconContainer">
             <div className="cartIcon">
               <a href="/cart">
+                <ProuductsCartCount />
                 <i className="fa-solid fa-cart-shopping"></i>
               </a>
             </div>

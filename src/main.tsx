@@ -9,6 +9,7 @@ import { CartProvider } from './context/cartCtx.tsx';
 import { SearchProvider } from './context/searchCtx.tsx';
 const client = new ApolloClient({
   uri: 'http://localhost:8888/graphql',
+  connectToDevTools: true,
   cache: new InMemoryCache()
 });
 ReactDOM.createRoot(document.getElementById('root')!).render(

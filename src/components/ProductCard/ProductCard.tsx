@@ -15,7 +15,7 @@ export const ProductCard = ({ data, children }) => {
       </h2>
       <p className="item-description">{desc}</p>
       <Rating productId={id} />
-      
+
       <p className="item-price">
         <sup>$</sup>
         {price}

@@ -8,7 +8,6 @@ import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { useCart } from '../../context/cartCtx';
 import { Spinner } from '../../components/Spinner/Spinner';
 
-
 const Home = () => {
   const images: string[] = [];
 
@@ -35,7 +34,7 @@ const Home = () => {
     }
   });
   if (ProductsQuery.loading) {
-    return <Spinner/>;
+    return <Spinner />;
   }
 
   return (
@@ -50,7 +49,7 @@ const Home = () => {
               <div key={product.id}>
                 <ProductCard data={product}>
                   {product.is_available ? (
-                    <button className="item-cart-btn" onClick={() => addToCart(product.id)}>
+                    <button className="item-cart-btn" onClick={() => addToCart(product.id,product.price)}>
                       Add To Cart
                     </button>
                   ) : (
