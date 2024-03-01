@@ -30,8 +30,10 @@
     font-size: 30px;
   }
   .homeContainer {
+    width: 100vw;
+    // overflow: hidden;
     display: grid;
-    margin: 0 auto;
+    // margin: 0 auto;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     margin-bottom: 50px;

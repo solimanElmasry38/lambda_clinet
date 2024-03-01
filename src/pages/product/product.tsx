@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { useQuery } from '@apollo/client';
 import { _GetProduct } from '../../gql/query/getProduct.gql';
 import './product.scss';
+
 function Product() {
   const { prod_id } = useParams();
   const { data, loading } = useQuery(_GetProduct, {
@@ -16,6 +17,7 @@ function Product() {
   if (loading) {
     return <Spinner />;
   }
+
   return (
     // <div className="cartProdContainer">
     //   <img
@@ -51,3 +53,7 @@ function Product() {
 }
 
 export default Product;
+
+// function Product() {
+
+// }

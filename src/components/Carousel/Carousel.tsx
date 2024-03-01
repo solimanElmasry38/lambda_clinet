@@ -22,10 +22,6 @@ export const Carousel = ({ images }) => {
     setDirection('left');
     setCurrentIndex((prevIndex) => (prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1));
   };
-  const handleDotClick = (index) => {
-    setDirection(index > currentIndex ? 'right' : 'left');
-    setCurrentIndex(index);
-  };
   const slideVariants = {
     hiddenRight: {
       x: '100%',
@@ -39,14 +35,14 @@ export const Carousel = ({ images }) => {
       x: '0',
       opacity: 1,
       transition: {
-        duration: 0.8
+        duration: 0.5
       }
     },
     exit: {
       opacity: 0,
       scale: 0.8,
       transition: {
-        duration: 0.8
+        duration: 0.5
       }
     }
   };
@@ -75,15 +71,6 @@ export const Carousel = ({ images }) => {
             <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z" />
           </svg>
         </div>
-      </div>
-      <div className="indicator">
-        {images.map((_, index) => (
-          <div
-            key={index}
-            className={`dot ${currentIndex === index ? 'active' : ''}`}
-            onClick={() => handleDotClick(index)}
-          ></div>
-        ))}
       </div>
     </div>
   );

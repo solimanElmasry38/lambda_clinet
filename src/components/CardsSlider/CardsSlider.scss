@@ -1,0 +1,50 @@
+.card-container {
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  transition: transform 0.5s ease;
+  margin: 0;
+  height: 700px;
+  h1 {
+    text-align: center;
+    color: rgb(116, 114, 114);
+    margin: 0 auto;
+    text-transform: capitalize;
+    letter-spacing: -5px;
+    position: relative;
+    height: fit-content;
+   
+//     &::after{
+//       content:"";
+//     position: absolute;
+// bottom:50%;
+// left: 50%;
+
+// transform: translate(-50%,-50%);
+//       width:200px;
+//       background-color: rgb(15, 4, 61);
+//       height: 5px;
+//     }
+  }
+  .card {
+    position: absolute;
+    right: 100%;
+    top: 60px;
+  }
+}
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  &:first-child {
+    left: 10px;
+  }
+  &:last-child {
+    right: 10px;
+  }
+}
