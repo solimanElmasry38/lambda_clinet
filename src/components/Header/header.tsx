@@ -5,7 +5,6 @@ import Cookies from 'js-cookie';
 import { _GetUser } from '../../gql/query/getUser.gql';
 import { Spinner } from '../Spinner/Spinner';
 
-
 import ProuductsCartCount from '../ProuductsCartCount/ProuductsCartCount';
 
 const logout = () => {

@@ -9,8 +9,8 @@ import { useEffect, useState } from 'react';
 
 export const SubHeader = ({}) => {
   const initialSelectedCategory = localStorage.getItem('selected-category')
-  ? localStorage.getItem('selected-category')
-  : '';
+    ? localStorage.getItem('selected-category')
+    : '';
   const [selectedCategoryId, setSelectedCategoryId] = useState(initialSelectedCategory);
   useEffect(() => {
     localStorage.setItem('selected-category', selectedCategoryId!);
@@ -33,16 +33,16 @@ export const SubHeader = ({}) => {
 
   return (
     <div className="subHeader">
-        <SearchBar/>
-    
+      <SearchBar />
+
       <ul>
         {data.GET_CATEGORYS.map((cat) => (
-          <Category 
-          key={cat.id}
-          categoryName={cat.name}
-          categoryId={cat.id}
-          isSelected={cat.id === selectedCategoryId}
-          onCategoryChanges={handleCategoryChange}
+          <Category
+            key={cat.id}
+            categoryName={cat.name}
+            categoryId={cat.id}
+            isSelected={cat.id === selectedCategoryId}
+            onCategoryChanges={handleCategoryChange}
           />
         ))}
       </ul>

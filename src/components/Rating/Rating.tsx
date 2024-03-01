@@ -23,7 +23,8 @@ function Rating({ productId }) {
           key={Math.random()}
           style={{
             color: '#ffc107'
-          }}>
+          }}
+        >
           &#9733;
         </span>
       );
@@ -36,7 +37,8 @@ function Rating({ productId }) {
           key={Math.random()}
           style={{
             color: 'gray'
-          }}>
+          }}
+        >
           &#9733;
         </span>
       );

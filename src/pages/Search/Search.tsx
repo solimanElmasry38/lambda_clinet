@@ -37,7 +37,8 @@ function Search() {
               {product.is_available ? (
                 <button
                   className="item-cart-btn"
-                  onClick={() => addToCart(product.id, product.price)}>
+                  onClick={() => addToCart(product.id, product.price)}
+                >
                   Add To Cart
                 </button>
               ) : (

@@ -20,8 +20,6 @@ function VerProductCard({ datas, IsCartProduct, children }) {
   if (loading) {
     return <Spinner />;
   }
-  
-
 
   return (
     <div className="vertProductCard">
@@ -35,8 +33,8 @@ function VerProductCard({ datas, IsCartProduct, children }) {
         <p className="item-description">{data.PRODUCT_GET.desc}</p>
         <div className="ReatingContainer">
           <Rating productId={id} />
-          </div>
-     
+        </div>
+
         {IsCartProduct ? (
           <p className="item-price">
             {data.PRODUCT_GET.price}$*
@@ -52,4 +50,3 @@ function VerProductCard({ datas, IsCartProduct, children }) {
 }
 
 export default VerProductCard;
-

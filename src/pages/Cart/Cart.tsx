@@ -5,11 +5,6 @@ import './Cart.scss';
 
 import { _GetProduct } from '../../gql/query/getProduct.gql';
 
-
-
-
-
-
 export const Cart = () => {
   const { removeFromCart, cartItems, cartQuantity } = useCart();
 
@@ -30,29 +25,26 @@ export const Cart = () => {
                 <i
                   className="fa-solid fa-trash"
                   style={{ color: 'red', cursor: 'pointer' }}
-                  onClick={() => removeFromCart(item.id)}></i>
+                  onClick={() => removeFromCart(item.id)}
+                ></i>
               </VerProductCard>
             ))
           )}
         </div>
         <aside className="CartSideBar">
-          <span className='sub'>Subtotal </span>
-          <span className='ProdQuant'>({cartQuantity} item):</span>
-          <span className='TotalPrice'>${totalPrice}</span>
+          <span className="sub">Subtotal </span>
+          <span className="ProdQuant">({cartQuantity} item):</span>
+          <span className="TotalPrice">${totalPrice}</span>
           {/* <div className="/"></div> */}
-         { 
-         
-         cartItems.length > 1?
-         <a href="" className="item-cart-btn">
-         chechout
-       </a>
-         :
-         <a href="" className="item-cart-btn disabled" >
-         chechout
-       </a>
-
-         }
-         
+          {cartItems.length > 1 ? (
+            <a href="" className="item-cart-btn">
+              chechout
+            </a>
+          ) : (
+            <a href="" className="item-cart-btn disabled">
+              chechout
+            </a>
+          )}
         </aside>
       </div>
     </>

@@ -2,12 +2,9 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 
 interface items {
   id: string;
-  price:number;
+  price: number;
   quantity: number;
 }
-
-
-
 
 interface IcartCTX {
   cartItems: items[];
@@ -15,7 +12,7 @@ interface IcartCTX {
 
   removeFromCart: (id: string) => void;
   decreaseItemQuantity: (id: string) => void;
-  addToCart: (id: string,price:number) => void;
+  addToCart: (id: string, price: number) => void;
 }
 const cartCTX = createContext<IcartCTX>({} as IcartCTX);
 
@@ -54,10 +51,10 @@ export const CartProvider: React.FC<ShoppingCartProviderProps> = ({ children }) 
     });
   };
 
-  const addToCart = (id: string,price) => {
+  const addToCart = (id: string, price) => {
     setCartItems((currItem): items[] => {
       if (currItem.find((item) => item.id === id) == null) {
-        return [...currItem, { id, quantity: 1 ,price}];
+        return [...currItem, { id, quantity: 1, price }];
       } else {
         return currItem.map((item) => {
           if (item.id === id) {

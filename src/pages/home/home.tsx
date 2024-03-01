@@ -23,7 +23,7 @@
 //         usr_token: Cookies.get('lambda_usr_token')
 //       }
 //     }
-//   }); 
+//   });
 //   if (catQuery.loading) {
 //     return <Spinner />;
 //   }
@@ -84,7 +84,6 @@
 //   );
 // };
 
-
 // export default Home;
 
 import './home.scss';
@@ -99,7 +98,6 @@ import { _GetCategory } from '../../gql/query/getCategory';
 import CardsSlider from '../../components/CardsSlider/CardsSlider';
 
 const Home = () => {
-
   const catQuery = useQuery(_GetCategory, {
     variables: {
       input: {
@@ -108,7 +106,7 @@ const Home = () => {
         usr_token: Cookies.get('lambda_usr_token')
       }
     }
-  }); 
+  });
 
   const offersQuery = useQuery(_GetOffers, {
     variables: {
@@ -159,12 +157,11 @@ const Home = () => {
                 </ProductCard>
               </div>
             ))} */}
-         <CardsSlider Cards={catQuery.data.GET_CATEGORY.product}/>
+          <CardsSlider Cards={catQuery.data.GET_CATEGORY.product} />
         </div>
       </section>
     </>
   );
 };
-
 
 export default Home;

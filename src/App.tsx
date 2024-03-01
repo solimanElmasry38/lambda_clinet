@@ -10,15 +10,12 @@ import Product from './pages/product/product';
 import Search from './pages/Search/Search';
 import { SubHeader } from './components/SubHeader/SubHeader';
 
-
 const VerifyEmail = React.lazy(() => import('./pages/auth/verifyEmail/verifyEmail'));
 const Signup = React.lazy(() => import('./pages/auth/Singup/signup'));
 const Login = React.lazy(() => import('./pages/auth/Login/login'));
 const Home = React.lazy(() => import('./pages/home/home'));
 
 export const App = () => {
-
-
   return (
     <>
       <Header />
