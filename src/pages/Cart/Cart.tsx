@@ -4,7 +4,11 @@ import VerProductCard from '../../components/VerProductCard/VerProductCard';
 import './Cart.scss';
 
 import { _GetProduct } from '../../gql/query/getProduct.gql';
-import { _GetProductPice } from '../../gql/query/getProductsNames';
+
+
+
+
+
 
 export const Cart = () => {
   const { removeFromCart, cartItems, cartQuantity } = useCart();

@@ -4,7 +4,7 @@ import './header.scss';
 import Cookies from 'js-cookie';
 import { _GetUser } from '../../gql/query/getUser.gql';
 import { Spinner } from '../Spinner/Spinner';
-import { useCart } from '../../context/cartCtx';
+
 
 import ProuductsCartCount from '../ProuductsCartCount/ProuductsCartCount';
 

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import Cookies from 'js-cookie';
+
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { _GetCategory } from '../../gql/query/getCategory';
-import { useQuery } from '@apollo/client';
-import { Spinner } from '../Spinner/Spinner';
+
 import "./CardsSlider.scss"
 import { useCart } from '../../context/cartCtx';
 function CardsSlider({Cards}) {

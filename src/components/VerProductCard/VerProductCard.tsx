@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import './VerProductCard.scss';
-import { useCart } from '../../context/cartCtx';
+
 import { useQuery } from '@apollo/client';
 import { _GetProduct } from '../../gql/query/getProduct.gql';
 import { Spinner } from '../Spinner/Spinner';
