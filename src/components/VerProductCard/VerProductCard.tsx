@@ -5,7 +5,7 @@ import { useCart } from '../../context/cartCtx';
 import { useQuery } from '@apollo/client';
 import { _GetProduct } from '../../gql/query/getProduct.gql';
 import { Spinner } from '../Spinner/Spinner';
-import Rating from '../Rating/rating';
+import Rating from '../Rating/Rating';
 // import Rating from '../Rating/rating';
 function VerProductCard({ datas, IsCartProduct, children }) {
   const { id, quantity } = datas;

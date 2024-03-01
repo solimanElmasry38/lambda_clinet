@@ -1,4 +1,4 @@
-import Rating from '../Rating/rating';
+import Rating from '../Rating/Rating';
 import './ProductCard.scss';
 export const ProductCard = ({ data, children }) => {
   //count
