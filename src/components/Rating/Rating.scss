@@ -2,3 +2,9 @@
   font-size: 2rem;
   margin: 5px;
 }
+@media only screen and (max-width: 480px) {
+  .star {
+    font-size: .9rem;
+    margin: 5px;
+  }
+}

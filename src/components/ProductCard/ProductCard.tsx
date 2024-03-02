@@ -8,13 +8,16 @@ export const ProductCard = ({ data, children }) => {
   return (
     <div className="item-container">
       <div className="main-item">
-        <img src={img} alt="" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
+        <img src={img} alt="" />
       </div>
       <h2 className="item-heading">
         <a href={`/products/${id}`}>{name}</a>
       </h2>
       <p className="item-description">{desc}</p>
+      <div className="rating">
+
       <Rating productId={id} />
+      </div>
 
       <p className="item-price">
         <sup>$</sup>

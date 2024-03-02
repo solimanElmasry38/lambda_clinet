@@ -96,6 +96,7 @@ import { _GetProducts } from '../../gql/query/getPoducts.gql';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { _GetCategory } from '../../gql/query/getCategory';
 import CardsSlider from '../../components/CardsSlider/CardsSlider';
+// import { useEffect } from 'react';
 
 const Home = () => {
   const catQuery = useQuery(_GetCategory, {
@@ -125,7 +126,11 @@ const Home = () => {
     console.log(catQuery.error);
   }
 
-  const images = offersQuery.data.OFFERS_GET.map((el) => el.img);
+  // useEffect(()=>{
+
+  //   const images = offersQuery.data.OFFERS_GET.map((el) => el.img);
+  // },[offersQuery.data])
+    const images = offersQuery.data.OFFERS_GET.map((el) => el.img);
 
   // const ProductsQuery = useQuery(_GetProducts, {
   //   variables: {

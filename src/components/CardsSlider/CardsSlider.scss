@@ -1,50 +1,88 @@
-.card-container {
+.multi-card-carousel {
+  margin-top: 20px;
   width: 100vw;
   position: relative;
-  overflow: hidden;
-  display: flex;
-  transition: transform 0.5s ease;
-  margin: 0;
-  height: 700px;
-  h1 {
-    text-align: center;
-    color: rgb(116, 114, 114);
-    margin: 0 auto;
-    text-transform: capitalize;
-    letter-spacing: -5px;
-    position: relative;
-    height: fit-content;
-   
-//     &::after{
-//       content:"";
-//     position: absolute;
-// bottom:50%;
-// left: 50%;
+  height:600px;
 
-// transform: translate(-50%,-50%);
-//       width:200px;
-//       background-color: rgb(15, 4, 61);
-//       height: 5px;
-//     }
-  }
-  .card {
-    position: absolute;
-    right: 100%;
-    top: 60px;
+
+  .carousel-wrapper {
+    width: 95%;
+  height:100%;
+
+    margin: auto;
+    position: relative;
+    .carousel-container {
+  height:100%;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .Next,
+    .Prev {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #0978d37e;
+      font-size: 30px;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333333;
+      cursor: pointer;
+      margin: 0 10px;
+       position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      &:hover {
+        background-color: #0978d3ef;
+      }
+    }
+    .Next {
+      right: 0;
+    }
+    .Prev {
+      left: 0;
+    }
   }
 }
-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  &:first-child {
-    left: 10px;
+
+// Responsive Design for Mobile Devices
+@media only screen and (max-width: 480px) {
+  .multi-card-carousel {
+  //  background-color: blue;
+   height:300px;
+    .carousel-wrapper {
+  //  background-color: red;
+   height:100%;
+     
+      .carousel-container {
+  //  background-color: aquamarine;
+   height:100%;
+   width:100%;
+       
+      }
+  
+      .Next,
+      .Prev {
+       
+        width:40px;
+        height: 40px;
+  
+        &:hover {
+          
+        }
+      }
+      .Next {
+       
+      }
+      .Prev {
+       
+      }
+    }
   }
-  &:last-child {
-    right: 10px;
-  }
+  
 }

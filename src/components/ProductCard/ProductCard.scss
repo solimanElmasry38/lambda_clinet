@@ -1,66 +1,72 @@
 .item-container {
   background-color: #fff;
-  width: 20rem;
-  margin: 1rem;
+  width:23%;
+max-height: 100%;
+  // margin: 1rem;
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.item-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+
+
+  .main-item {
+    width: 100%;
+    height: 25%;
+    display: block;
+    margin: 0 auto;
+    img{
+      width:100%;
+      height: 100%;
+    }
+  }
+  
+  .item-heading {
+    width: 100%;
+    height: 15%;
+    
+    // background-color: aqua;
+    color: black;
+    text-transform: capitalize;
+  }
+  
+  .item-description {
+    width: 100%;
+    height: 45%;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 200;
+    color: rgba(0, 0, 0, 0.521);
+    // background-color: blue;
+    overflow: hidden;
+  }
 }
 
-.top-left-logo {
-  width: 60px;
-  margin-left: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.top-left-logo img {
-  width: 100%;
-}
 
-.top-right-cart {
-  font-size: 1.4rem;
-  margin-right: 1rem;
-}
 
-.main-item {
-  width: 200px;
-  display: block;
-  margin: 0 auto;
-}
-
-.item-heading {
-  color: black;
-  text-transform: capitalize;
-}
-
-.item-description {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  font-weight: 200;
-  color: black;
-  height: 134px;
-  overflow: hidden;
-}
 
 .item-price {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
   color: black;
-}
+  width:100%;
+    height: 10% ;
+  // background-color: royalblue;
+  }
 
 .item-price sup {
   color: green;
 }
-
+.rating{
+  width:100%;
+  // background-color: green;
+  height: 10%;
+  // background-color: teal;
+}
 .rating i {
   color: rgb(200, 142, 254);
   margin-bottom: 1rem;
@@ -71,6 +77,7 @@
   background-color: transparent;
   margin: 0 auto;
   width: 100%;
+  height: fit-content;
   border: 1px;
   font-weight: bold;
   padding: 0.5rem 1rem;
@@ -87,4 +94,73 @@
 .item-cart-btn:hover {
   color: #fff;
   background-color: rgb(160, 110, 206);
+}
+@media only screen and (max-width: 480px) {
+  .item-container {
+   
+    width:30%;
+    height: calc(100% - 2rem) ;
+
+    .item-heading {
+    // background-color: teal;
+      font-size: 12px;
+    }
+    
+    .item-description {
+    //  background-color: red;
+    // background-color: blue;
+
+     font-size: 9px;
+     font-weight: 700;
+    }
+    
+    .item-price {
+    // background-color: royalblue;
+      
+      font-size: 12px;
+    }
+    
+    .item-price sup {
+      
+      
+    }
+    
+    .rating i {
+      
+  
+    }
+    
+    .item-cart-btn {
+      font-size: 8px;
+     
+    }
+    
+  
+  }
+  .item-top {
+    
+  
+  }
+  
+  .top-left-logo {
+    
+    
+  }
+  
+  .top-left-logo img {
+    
+  
+  }
+  
+  .top-right-cart {
+    
+   
+  }
+  
+  .main-item {
+    
+    // background-color: rgb(6, 194, 194);
+  }
+  
+ 
 }

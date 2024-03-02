@@ -12,7 +12,7 @@ const logout = () => {
   location.reload();
 };
 export const Header = () => {
-  const { data, loading } = useQuery(_GetUser, {
+  const { data, loading ,error} = useQuery(_GetUser, {
     variables: {
       input: {
         id: Cookies.get('lambda_usr_id'),
@@ -23,7 +23,10 @@ export const Header = () => {
   if (loading) {
     return <Spinner />;
   }
-
+  if(error){
+    throw error;
+  }
+console.log(data.USER_GET.img)
   return (
     <header>
       <nav>
