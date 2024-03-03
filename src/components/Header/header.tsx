@@ -6,27 +6,33 @@ import { _GetUser } from '../../gql/query/getUser.gql';
 import { Spinner } from '../Spinner/Spinner';
 
 import ProuductsCartCount from '../ProuductsCartCount/ProuductsCartCount';
+import { useState } from 'react';
 
 const logout = () => {
   Cookies.remove('lambda_usr_token');
   location.reload();
 };
 export const Header = () => {
-  const { data, loading ,error} = useQuery(_GetUser, {
-    variables: {
-      input: {
-        id: Cookies.get('lambda_usr_id'),
-        token: Cookies.get('lambda_usr_token')
-      }
-    }
-  });
-  if (loading) {
-    return <Spinner />;
-  }
-  if(error){
-    throw error;
-  }
-console.log(data.USER_GET.img)
+  // const [img,SetData]=useState()
+  // if(Cookies.get('lambda_usr_token')){
+
+  //   const { data, loading ,error} = useQuery(_GetUser, {
+  //     variables: {
+  //       input: {
+  //         id: Cookies.get('lambda_usr_id'),
+  //         token: Cookies.get('lambda_usr_token')
+  //       }
+  //     }
+  //   });
+  //   if (loading) {
+  //     return <Spinner />;
+  //   }
+  //   if(error){
+  //     throw error;
+  //   }
+  //   SetData(data);
+  // }
+  // console.log(data.USER_GET.img)
   return (
     <header>
       <nav>
@@ -43,20 +49,20 @@ console.log(data.USER_GET.img)
           </li>
 
           {Cookies.get('lambda_usr_token') ? (
-            <>
-              <li>
-                <span className="nav_btn" onClick={logout}>
-                  logout
-                </span>
-              </li>
-
-              {data ? (
-                <img src={data.USER_GET.img} alt="" loading="lazy" className="profile" />
-              ) : (
-                <span></span>
-              )}
-            </>
+            // <>
+            <li>
+              <span className="nav_btn" onClick={logout}>
+                logout
+              </span>
+            </li>
           ) : (
+            //   {img ? (
+            //     <img src={img.USER_GET.img} alt="" loading="lazy" className="profile" />
+            //   ) : (
+            //     <span></span>
+            //   )}
+            // </>
+
             <>
               <li>
                 <a className="nav_btn" href="">

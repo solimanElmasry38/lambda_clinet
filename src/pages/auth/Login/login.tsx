@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { GlassOverLay } from '../../../components/GlassOverLay/overLay';
 import '../auth.scss';
 import { LazyBackground } from '../../../components/lazy';
-import { Randshapes } from '../../../components/Randshapes/rand_shapes';
 import { useMutation } from '@apollo/client';
 import { _Login } from '../../../gql/mutation/login.gql';
 import Cookies from 'js-cookie';
@@ -32,7 +31,6 @@ const Login = (): JSX.Element => {
     <LazyBackground
       src={'https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826804/yv11nhvro6ia0yxrinwc.jpg'}
     >
-      <Randshapes />
       <GlassOverLay>
         <div className="formContainer">
           <form action="" method="POST" className="authForm">
@@ -53,8 +51,8 @@ const Login = (): JSX.Element => {
               placeholder="password"
               onChange={(e) => setpass(e.target.value)}
             />
+            <button onClick={() => handelSubmit()}>login</button>
           </form>
-          <button onClick={() => handelSubmit()}>sign up</button>
         </div>
       </GlassOverLay>
     </LazyBackground>

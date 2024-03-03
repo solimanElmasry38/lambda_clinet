@@ -39,8 +39,8 @@ const VerifyEmail = () => {
               placeholder="otp"
               onChange={(e) => setOtp(e.target.value)}
             />
+            <button onClick={() => handelSubmit()}>submit</button>
           </form>
-          <button onClick={() => handelSubmit()}>submit</button>
         </div>
       </GlassOverLay>
     </LazyBackground>

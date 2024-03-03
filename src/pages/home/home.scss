@@ -5,12 +5,20 @@
   position: relative;
   top: 80px;
   width: 100%;
-  height: 100%;
+  // height: 100%;
+  // height: 170vh;
   // background-image: url("../../assets/signupBack.jpg");
   // background-position: center; /* Center the image */
   // background-repeat: no-repeat; /* Do not repeat the image */
   // background-size: cover; /* Resize the background image to cover the entire container */
   // background-attachment: fixed;
+  // background-color: rebeccapurple;
+  // z-index: 222;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   .slider {
     width: 100%;
     height: 450px;
@@ -31,12 +39,17 @@
   }
   .homeContainer {
     width: 100vw;
-    // overflow: hidden;
-    display: grid;
-    // margin: 0 auto;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    margin-bottom: 50px;
+    // // overflow: hidden;
+    // display: grid;
+    // // margin: 0 auto;
+    // grid-column-gap: 20px;
+    // grid-row-gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 55px;
+    // margin-bottom: 50px;
     transform: translateY(-150px);
   }
 }
@@ -49,11 +62,10 @@
   }
 }
 
-@media  (max-width: 480px) {
+@media (max-width: 480px) {
   .homeSec {
     .homeContainer {
       transform: translateY(-300px);
-      
     }
   }
 }

@@ -18,3 +18,13 @@ color:white;
     color: white;
   }
 }
+
+
+
+@media (max-width: 480px) {
+  .categoryBtn {
+   
+    padding: 2px 8px;
+font-size: 12px;
+  }
+}

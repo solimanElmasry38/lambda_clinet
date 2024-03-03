@@ -27,10 +27,11 @@ body {
 }
 
 #root {
-  display: flex;
-// min-height: 100ch;
-overflow: hidden;
-  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
   background-color: rgb(233, 234, 235);
 }
 a {

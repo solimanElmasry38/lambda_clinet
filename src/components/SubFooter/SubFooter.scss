@@ -1,0 +1,36 @@
+.SubFooter {
+  position: relative;
+  top: 325px;
+  width: 60%;
+  height: 350px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+  gap: 10px;
+
+  .CategoryCard {
+    width: 23%;
+    height: calc(50% - 5px);
+    cursor: pointer;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .SubFooter {
+    width: 100%;
+    height: 150px;
+
+    margin-bottom: 25px;
+    .CategoryCard {
+      width: 23%;
+      height: calc(100% - 5px);
+      cursor: pointer;
+    }
+  }
+}

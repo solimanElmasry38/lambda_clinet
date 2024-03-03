@@ -24,8 +24,44 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      width: 200px;
+      width: 100%;
     }
     
+  }
+}
+@media (max-width: 480px) {
+  .vertProductCard {
+   overflow: hidden;
+   padding-bottom: 12px;
+  margin-bottom:35px ;
+   
+    .imgContainer {
+     height: 50%;
+    margin:auto 0;
+      img {
+      
+      }
+    }
+    .item-heading{
+      // background-color: aqua;
+      font-size: 14px;
+    }
+    .DetailsContainer {
+    //  background-color: red;
+     padding: 9px;
+     .item-description{
+      font-size: 12px;
+      // background-color: blue;
+     }
+      .ReatingContainer {
+      // background-color: tan;
+      height: 10px;
+      }
+      button{
+        // background-color: teal;
+        font-size: 12px;
+      }
+      
+    }
   }
 }

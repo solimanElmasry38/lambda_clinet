@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import './CardsSlider.scss';
@@ -51,9 +50,9 @@ function CardsSlider({ Cards }) {
           ))}
         </div>
 
-         <button className="Prev" onClick={handlePrev}>
+        <button className="Prev" onClick={handlePrev}>
           &lt;
-        </button> 
+        </button>
         <button className="Next" onClick={handleNext}>
           &gt;
         </button>

@@ -3,23 +3,20 @@
 // @use "./mixins";
 .authContainer {
   width: 100%;
-  height: 85%;
-  background: black;
+  height: 20%;
+  // background: rgb(38, 10, 197);
   display: flex;
   padding: 20px 0;
   align-items: center;
   justify-content: center;
-  // background-image: url("../../assets/signupBack.jpg");
-  // background-position: center; /* Center the image */
-  // background-repeat: no-repeat; /* Do not repeat the image */
-  // background-size: cover; /* Resize the background image to cover the entire container */
-  margin-top: 65px;
-  display: grid;
-  grid-template-columns: 1fr;
+ margin-top: 80px;
+  // display: grid;
+  // grid-template-columns: 1fr;
+ 
 
   .formContainer {
-    grid-row-start: 1;
-    grid-column-start: 1;
+    // grid-row-start: 1;
+    // grid-column-start: 1;
     margin: auto;
     z-index: 1;
     width: 50%;
@@ -34,23 +31,29 @@
     transition: 0.5s;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
     gap: 20px;
+    // background: rgba(247, 0, 0, 0.2);
+
+    height: 80%;
+    // background-color: rgba(107, 184, 184, 0.39);
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 15px 32px 0 rgba(31, 38, 135, 0.842);
     }
     .err {
-      color: red;
+      // color: red;
       font-size: 14px;
     }
     form {
       width: 100%;
+      height: 80%;
+      // background-color: teal;
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-      gap: 10px;
+      // gap: 10px;
       label {
         color: black;
         text-transform: capitalize;
@@ -80,6 +83,27 @@
         border-radius: 10px;
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .authContainer {
+    // margin-top: 0px;
+    min-height: 50%;
+
+    .formContainer {
+// background-color: teal;
+height: calc(100% - 30px) ;
+      form {
+
+        label {
+          font-size: 14px;
+        }
+        input{
+          padding:5px;
+        }
       }
     }
   }

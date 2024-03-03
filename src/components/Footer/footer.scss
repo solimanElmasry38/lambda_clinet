@@ -2,4 +2,10 @@
   height: 200px;
   background: rosybrown;
   z-index: 1;
+  margin-top: 25px;
+}
+@media only screen and (max-width: 480px) {
+ footer{
+  // margin-top: 355px;
+ }
 }

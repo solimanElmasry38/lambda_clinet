@@ -5,6 +5,7 @@ export const _GetCategory = gql`
     GET_CATEGORY(input: $input) {
       name
       id
+      img
       product {
         id
         name

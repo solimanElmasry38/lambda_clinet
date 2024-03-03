@@ -3,7 +3,7 @@
   height: 55px;
   background: #495797;
   position: relative;
-
+z-index: 1;
   top: 80px;
   display: flex;
   align-items: center;
@@ -15,10 +15,22 @@
   //  background-color: red;
    display: flex;
    align-items: center;
-   justify-content: space-between ;
+  //  justify-content: space-between ;
    
   }
    
     
   }
 
+
+  @media (max-width: 480px) {
+    .subHeader {
+    height:fit-content;
+   
+      ul{
+        width:65%;
+        flex-wrap: wrap;
+      }
+    }
+  }
+  

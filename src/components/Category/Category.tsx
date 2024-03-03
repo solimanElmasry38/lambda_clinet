@@ -5,7 +5,7 @@ import { useSearch } from '../../context/searchCtx';
 import { _GetProducts } from '../../gql/query/getPoducts.gql';
 import { useNavigate } from 'react-router-dom';
 
-function Category({ categoryName, isSelected, categoryId, onCategoryChanges }) {
+function Category({ categoryName, isSelected, categoryId, SelectedCategory }) {
   const { onCategoryChange } = useSearch();
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ function Category({ categoryName, isSelected, categoryId, onCategoryChanges }) {
       onClick={() => {
         navigate('/search');
         onCategoryChange(categoryId);
-        onCategoryChanges(categoryId);
+        SelectedCategory(categoryId);
       }}
     >
       {categoryName}

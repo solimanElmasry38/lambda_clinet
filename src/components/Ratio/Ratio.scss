@@ -1,0 +1,30 @@
+.aspect-ratio-container {
+    position: relative; // Ensure the container establishes a positioning context
+  
+    &__inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; // Hide any overflow
+    }
+  
+    img {
+      width: 100%; // Fill the container horizontally
+      height:  auto ; // Maintain aspect ratio
+      display: block; // Ensure inline-block spaces don't affect layout
+    }
+  
+    // You can also set a specific aspect ratio by adjusting padding
+    &--16x9 {
+      padding-top: calc(9 / 16 * 100%); // 16:9 aspect ratio
+    }
+  
+    &--4x3 {
+      padding-top: calc(3 / 4 * 100%); // 4:3 aspect ratio
+    }
+  
+    // Add more aspect ratios as needed
+  }
+  

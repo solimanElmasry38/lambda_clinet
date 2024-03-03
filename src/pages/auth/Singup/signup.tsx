@@ -9,7 +9,6 @@ import post from 'axios';
 import { LazyBackground } from '../../../components/lazy';
 
 import { useState } from 'react';
-import { Randshapes } from '../../../components/Randshapes/rand_shapes';
 
 const Signup = () => {
   const [username, setusername] = useState('');
@@ -42,7 +41,6 @@ const Signup = () => {
     <LazyBackground
       src={'https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826804/yv11nhvro6ia0yxrinwc.jpg'}
     >
-      <Randshapes />
       <GlassOverLay>
         <div className="formContainer">
           <form action="" method="POST" className="authForm">
@@ -71,8 +69,8 @@ const Signup = () => {
               placeholder="password"
               onChange={(e) => setpass(e.target.value)}
             />
+            <button onClick={() => handelSubmit()}>sign up</button>
           </form>
-          <button onClick={() => handelSubmit()}>sign up</button>
           <p className="or">or</p>
           <div className="social">
             <Link

@@ -23,7 +23,9 @@ function SearchBar() {
   const onSearch = (ProductName) => {
     onInputChange(ProductName);
     setDropdownVisible(false);
+    // location('/search')
     navigate('/search');
+    window.location.reload();
   };
   return (
     <div className="inpContainer">
