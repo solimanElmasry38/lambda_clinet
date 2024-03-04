@@ -30,14 +30,14 @@ function SubFooter() {
   const SmartHomeCategQuery = useQuery(_GetCategory, {
     variables: {
       input: {
-        Categ_name: 'smarthome'
+        Categ_name: 'smartHome'
       }
     }
   });
-  const SmartHomeCategQuery2 = useQuery(_GetCategory, {
+  const techCategQuery = useQuery(_GetCategory, {
     variables: {
       input: {
-        Categ_name: 'smarthome'
+        Categ_name: 'tech'
       }
     }
   });
@@ -46,12 +46,12 @@ function SubFooter() {
     HealthCategQuery.error ||
     SmartHomeCategQuery.error ||
     SportCategQuery.error ||
-    SmartHomeCategQuery2.error;
+    techCategQuery.error;
   const Loadings =
     HealthCategQuery.loading ||
     SmartHomeCategQuery.loading ||
     SportCategQuery.loading ||
-    SmartHomeCategQuery2.loading;
+    techCategQuery.loading;
   if (Loadings) {
     return <Spinner />;
   }
@@ -93,10 +93,10 @@ function SubFooter() {
       <div
         className="CategoryCard"
         onClick={() => {
-          handelClick(SmartHomeCategQuery2.data.GET_CATEGORY.id);
+          handelClick(techCategQuery.data.GET_CATEGORY.id);
         }}
       >
-        <img src={SmartHomeCategQuery2.data.GET_CATEGORY.img} alt="" />
+        <img src={techCategQuery.data.GET_CATEGORY.img} alt="" />
       </div>
     </div>
   );

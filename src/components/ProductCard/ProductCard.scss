@@ -87,6 +87,15 @@
   position: relative;
   cursor: pointer;
   transition: all 0.3s linear;
+  &.disable{
+    background-color: rgb(176, 163, 189);
+    cursor: not-allowed;
+    &:hover {
+      color: #fff;
+      background-color: rgb(176, 163, 189);
+
+    }
+  }
   &:hover {
     color: #fff;
     background-color: rgb(160, 110, 206);

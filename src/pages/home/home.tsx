@@ -20,7 +20,7 @@ const Home = () => {
   const SmartHomeCategQuery = useQuery(_GetCategory, {
     variables: {
       input: {
-        Categ_name: 'smarthome'
+        Categ_name: 'smartHome'
       }
     }
   });
