@@ -7,12 +7,14 @@ import { Spinner } from '../Spinner/Spinner';
 
 import ProuductsCartCount from '../ProuductsCartCount/ProuductsCartCount';
 import { useState } from 'react';
+import { useCart } from '../../context/cartCtx';
 
 const logout = () => {
   Cookies.remove('lambda_usr_token');
   location.reload();
 };
 export const Header = () => {
+
   // const [img,SetData]=useState()
   // if(Cookies.get('lambda_usr_token')){
 
@@ -80,6 +82,7 @@ export const Header = () => {
             <div className="cartIcon">
               <a href="/cart">
                 <ProuductsCartCount />
+               
                 <i className="fa-solid fa-cart-shopping"></i>
               </a>
             </div>

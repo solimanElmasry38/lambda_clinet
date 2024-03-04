@@ -5,6 +5,7 @@ import './CardsSlider.scss';
 import { useMutation } from '@apollo/client';
 import { _Add } from '../../gql/mutation/addToCart';
 import Cookies from 'js-cookie';
+import { useCart } from '../../context/cartCtx';
 
 function CardsSlider({ Cards }) {
   // const { addToCart } = useCart();
@@ -13,8 +14,9 @@ function CardsSlider({ Cards }) {
   const [ADD_TO_CART] = useMutation(_Add);
 // console.log(cards)
   
+const {  setstates} = useCart();
 const Add =async (id)=>{
-  
+
   await ADD_TO_CART({
     variables: {
       "input": {
@@ -24,10 +26,14 @@ const Add =async (id)=>{
       }
     }
   }).then((res) => {
+    // setstates(prev=>{
+    //   prev+1
+    // })
    console.log(res.data.ADD_TO_CART)
   }).catch(err=>{
     throw err
   })
+  
 }
 
 
@@ -58,12 +64,15 @@ const Add =async (id)=>{
 
   return (
     <div className="multi-card-carousel">
+
       <div className="carousel-wrapper">
         <div className="carousel-container">
           {Cards.slice(currentIndex, currentIndex + cardsPerScreen).map((card, index) => (
             <ProductCard key={index} data={card}>
               {card.is_available ? (
-                <button className="item-cart-btn" onClick={() => Add(card.id)}>
+                <button className="item-cart-btn" onClick={() => {Add(card.id)
+                  
+                }}>
                   Add To Cart 
                 </button>
               ) : (
