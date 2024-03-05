@@ -88,7 +88,7 @@ import { Spinner } from '../../components/Spinner/Spinner';
 import { useEffect } from 'react';
 
 export const Cart = () => {
-  const { setcartQuantityNum ,cartQuantityNum,state} = useCart();
+  
 
   const cartProductsQuery = useQuery(_GetCartProducts, {
     variables: {
@@ -98,25 +98,14 @@ export const Cart = () => {
     },
   });
 
-  useEffect(() => {
-    if (cartProductsQuery.data) {
-      const totalCount = cartProductsQuery.data.GET_CART_PRODUCTS.reduce((total, item) => {
-        return total + item.coun_in_cart;
-      }, 0);
-      setcartQuantityNum(totalCount)
-    }
-  }, [cartProductsQuery.data,state]);
-
-  useEffect(() => {
-    console.log("changed")
-  }, [state]);
+ 
   const loading = cartProductsQuery.loading;
 
   if (loading) {
     return <Spinner />;
   }
 
-  const totalPrice = cartProductsQuery.data ? cartProductsQuery.data.GET_CART_PRODUCTS.reduce((total, item) => {
+  const totalPrice = cartProductsQuery.data ? cartProductsQuery.data.GET_CART_PRODUCTS.products.reduce((total, item) => {
     const productPrice = item.price;
     return total + item.coun_in_cart * productPrice;
   }, 0) : 0;
@@ -124,10 +113,10 @@ export const Cart = () => {
   return (
     <div className="cartContainer">
       <div className="cart">
-        {cartProductsQuery.data && cartProductsQuery.data.GET_CART_PRODUCTS.length < 1 ? (
+        {cartProductsQuery.data && cartProductsQuery.data.GET_CART_PRODUCTS.products.length < 1 ? (
           <p className="empty">Cart is empty</p>
         ) : (
-          cartProductsQuery.data && cartProductsQuery.data.GET_CART_PRODUCTS.map((item) => (
+          cartProductsQuery.data && cartProductsQuery.data.GET_CART_PRODUCTS.products.map((item) => (
             <VerProductCard item={item} key={item.id} IsCartProduct={true}>
               <i className="fa-solid fa-trash" style={{ color: 'red', cursor: 'pointer' }}></i>
             </VerProductCard>
@@ -138,10 +127,10 @@ export const Cart = () => {
         <span className="sub">Subtotal </span>
         <span>
 
-        {cartQuantityNum} (products)
+        {/* {cartQuantityNum} (products) */}
         </span>
         <span className="TotalPrice">${totalPrice}</span>
-        {cartProductsQuery.data && cartProductsQuery.data.GET_CART_PRODUCTS.length > 1 ? (
+        {cartProductsQuery.data && cartProductsQuery.data.GET_CART_PRODUCTS.products.length > 1 ? (
           <a href="/checkout" className="item-cart-btn">
             Checkout
           </a>

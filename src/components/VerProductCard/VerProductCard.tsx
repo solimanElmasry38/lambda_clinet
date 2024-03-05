@@ -2,26 +2,12 @@ import React from 'react';
 
 import './VerProductCard.scss';
 
-import { useQuery } from '@apollo/client';
-import { _GetProduct } from '../../gql/query/getProduct.gql';
-import { Spinner } from '../Spinner/Spinner';
-import Rating from '../Rating/Rating';
-// import Rating from '../Rating/rating';
-function VerProductCard({ item, IsCartProduct, children }) {
-  console.log(item)
-  // const { id, quantity } = datas;
-// console.log(datas)
-  // const { data, loading } = useQuery(_GetProduct, {
-  //   variables: {
-  //     input: {
-  //       id
-  //     }
-  //   }
-  // });
-  // if (loading) {
-  //   return <Spinner />;
-  // }
 
+import { _GetProduct } from '../../gql/query/getProduct.gql';
+import Rating from '../Rating/Rating';
+
+function VerProductCard({ item, IsCartProduct, children }) {
+ 
   return (
     <div className="vertProductCard">
       <div className="imgContainer">

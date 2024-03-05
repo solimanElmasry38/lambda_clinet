@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
-import { useCart } from '../../context/cartCtx';
+import React, { useEffect, useState } from 'react';
+
 import './ProuductsCartCount.scss';
 function ProuductsCartCount() {
-  const { cartQuantityNum} = useCart();
-let x=cartQuantityNum;
+  // const { cartQuantityNum } = useCart();
+  const [st,setSt]=useState(localStorage.getItem('shopping-cart-coutn'))
+// const count;
 useEffect(()=>{
-x=cartQuantityNum
-},[cartQuantityNum])
-console.log(x)
-console.log(cartQuantityNum)
+  setSt(localStorage.getItem('shopping-cart-coutn')!)
+  //  location.reload()
 
-return <span className="CartItemsCount">{x}</span>;
+},[localStorage.getItem('shopping-cart-coutn')])
+
+  return <span className="CartItemsCount"> {st}</span>;
 }
 
 export default ProuductsCartCount;
+
+

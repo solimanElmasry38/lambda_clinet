@@ -1,6 +1,7 @@
 .vertProductCard {
   grid-column: 2/3;
   margin-bottom:100px ;
+  overflow: hidden;
   display: flex;
   .imgContainer {
     width: 30%;
@@ -20,9 +21,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    .item-description{
+      height: 40%;
+      overflow: hidden;
+     }
     .ReatingContainer {
       display: flex;
       align-items: center;
+      height: 13%;
       justify-content: flex-start;
       width: 100%;
     }
@@ -38,27 +44,20 @@
     .imgContainer {
      height: 50%;
     margin:auto 0;
-      img {
-      
-      }
+     
     }
     .item-heading{
-      // background-color: aqua;
       font-size: 14px;
     }
     .DetailsContainer {
-    //  background-color: red;
      padding: 9px;
      .item-description{
       font-size: 12px;
-      // background-color: blue;
      }
       .ReatingContainer {
-      // background-color: tan;
       height: 10px;
       }
       button{
-        // background-color: teal;
         font-size: 12px;
       }
       
