@@ -8,16 +8,12 @@ import { useEffect, useState } from 'react';
 import { _IsProductAvailable } from '../../gql/query/isProductAvailable';
 import { Spinner } from '../Spinner/Spinner';
 export const AddToCartBtn = ({ id }) => {
-
-
   const { addToast } = useToasts();
 
+  const [IsAvailableFunc, { data, loading }] = useLazyQuery(_IsProductAvailable);
+  const [r, setR] = useState(true);
 
-const [IsAvailableFunc, {data ,loading}]= useLazyQuery(_IsProductAvailable)
-const [r,setR]=useState(true);
-
-
-const [ADD_TO_CART] = useMutation(_Add);
+  const [ADD_TO_CART] = useMutation(_Add);
 
   const addProductToCart = async (id) => {
     await ADD_TO_CART({
@@ -30,49 +26,43 @@ const [ADD_TO_CART] = useMutation(_Add);
       }
     })
       .then((res) => {
-      
-        localStorage.setItem('shopping-cart-coutn', res.data.ADD_TO_CART.TotalProductInCart);
+        // localStorage.setItem('shopping-cart-coutn', res.data.ADD_TO_CART.TotalProductInCart);
 
-       setR(res.data.ADD_TO_CART.availability);
+        setR(res.data.ADD_TO_CART.availability);
       })
       .catch((err) => {
         addToast(err.message, { appearance: 'error' });
       });
   };
-let counter =0;
-useEffect(()=>{
-  IsAvailableFunc({
-    variables: {
-     input:{
-       productId:id
-     }
-    }
- });
+  let counter = 0;
+  useEffect(() => {
+    IsAvailableFunc({
+      variables: {
+        input: {
+          productId: id
+        }
+      }
+    });
+  }, [counter]);
 
-},[counter])
-
-if(loading){
-  return <Spinner/>
-}
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <>
-     {
-
-    data&&(r&&data.IS_AVILABLE)?
-      <button
-      className="item-cart-btn"
-      onClick={async () => {
-        await addProductToCart(id);
-        
-
-      }}>
-      Add To Cart s
-      {r && data.IS_AVILABLE}ss
-    </button>:
-    <button className="item-cart-btn disable">out of stock</button>
-     }
-
+      {data && r && data.IS_AVILABLE ? (
+        <button
+          className="item-cart-btn"
+          onClick={async () => {
+            await addProductToCart(id);
+          }}>
+          Add To Cart
+          {r && data.IS_AVILABLE}
+        </button>
+      ) : (
+        <button className="item-cart-btn disable">out of stock</button>
+      )}
     </>
   );
 };

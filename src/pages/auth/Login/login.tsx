@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { GlassOverLay } from '../../../components/GlassOverLay/overLay';
 import '../auth.scss';
 import { LazyBackground } from '../../../components/lazy';
@@ -12,7 +12,8 @@ const Login = (): JSX.Element => {
 
   const [LOGIN, { error }] = useMutation(_Login);
 
-  const handelSubmit = async (): Promise<void> => {
+  const handelSubmit = async (e): Promise<void> => {
+    e.preventDefault();
     await LOGIN({
       variables: {
         input: {
@@ -32,6 +33,7 @@ const Login = (): JSX.Element => {
       src={'https://res.cloudinary.com/ddrulpeh5/image/upload/v1702826804/yv11nhvro6ia0yxrinwc.jpg'}
     >
       <GlassOverLay>
+        {/* {go} */}
         <div className="formContainer">
           <form action="" method="POST" className="authForm">
             {error && <p className="err">* {error.message}</p>}
@@ -51,7 +53,7 @@ const Login = (): JSX.Element => {
               placeholder="password"
               onChange={(e) => setpass(e.target.value)}
             />
-            <button onClick={() => handelSubmit()}>login</button>
+            <button onClick={(e) => handelSubmit(e)}>login</button>
           </form>
         </div>
       </GlassOverLay>

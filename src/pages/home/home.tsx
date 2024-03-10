@@ -1,12 +1,13 @@
 import './home.scss';
 import { Carousel } from '../../components/Carousel/Carousel';
-import { useQuery } from '@apollo/client';
+import { useQuery, useSubscription } from '@apollo/client';
 import { _GetOffers } from '../../gql/query/getOffers';
 import Cookies from 'js-cookie';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { _GetCategory } from '../../gql/query/getCategory';
 import CardsSlider from '../../components/CardsSlider/CardsSlider';
 import SubFooter from '../../components/SubFooter/SubFooter';
+import { _AddToCartSub } from '../../gql/subscribtion/addToCartSub';
 
 const Home = () => {
   const TechCategQuery = useQuery(_GetCategory, {
@@ -15,7 +16,9 @@ const Home = () => {
         Categ_name: 'tech'
       }
     }
+
   });
+
 
   const SmartHomeCategQuery = useQuery(_GetCategory, {
     variables: {
@@ -54,6 +57,7 @@ const Home = () => {
     SmartHomeCategQuery.loading ||
     booksCategQuery.loading ||
     offersQuery.loading
+    
   ) {
     return <Spinner />;
   }
@@ -62,6 +66,11 @@ const Home = () => {
   return (
     <section className="homeSec">
       <div className="slider">
+        <h1>
+
+
+     
+        </h1>
         {images.length ? <Carousel images={images} /> : <div className="placeholder"></div>}
       </div>
       <div className="homeContainer">

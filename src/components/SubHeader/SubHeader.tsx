@@ -20,7 +20,7 @@ export const SubHeader = ({}) => {
       <SearchBar />
 
       <ul>
-        {data.GET_CATEGORYS &&
+        {data &&
           data.GET_CATEGORYS.map((cat) => (
             <Category
               key={cat.id}

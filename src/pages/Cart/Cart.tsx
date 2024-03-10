@@ -78,14 +78,14 @@
 //   );
   
 // };
-import { useCart } from '../../context/cartCtx';
+// import { useCart } from '../../context/cartCtx';
 import Cookies from 'js-cookie';
 import VerProductCard from '../../components/VerProductCard/VerProductCard';
 import './Cart.scss';
 import { useQuery } from '@apollo/client';
 import { _GetCartProducts } from '../../gql/query/getCartProducts';
 import { Spinner } from '../../components/Spinner/Spinner';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 export const Cart = () => {
   
@@ -103,6 +103,18 @@ export const Cart = () => {
 
   if (loading) {
     return <Spinner />;
+  }
+  if(cartProductsQuery.error){
+    return (
+      <div className="cartContainer">
+
+        <div className="cart">
+
+        <p className="empty">{cartProductsQuery.error.message}</p>
+        </div>
+      </div>
+    )
+   
   }
 
   const totalPrice = cartProductsQuery.data ? cartProductsQuery.data.GET_CART_PRODUCTS.products.reduce((total, item) => {
@@ -127,7 +139,6 @@ export const Cart = () => {
         <span className="sub">Subtotal </span>
         <span>
 
-        {/* {cartQuantityNum} (products) */}
         </span>
         <span className="TotalPrice">${totalPrice}</span>
         {cartProductsQuery.data && cartProductsQuery.data.GET_CART_PRODUCTS.products.length > 1 ? (

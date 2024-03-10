@@ -1,47 +1,27 @@
-import { useQuery } from '@apollo/client';
+
 import Logo from '../../assets/logo.png';
 import './header.scss';
 import Cookies from 'js-cookie';
 import { _GetUser } from '../../gql/query/getUser.gql';
-import { Spinner } from '../Spinner/Spinner';
 
-import ProuductsCartCount from '../ProuductsCartCount/ProuductsCartCount';
-import { useState } from 'react';
-import { useCart } from '../../context/cartCtx';
+
+import ProductsCartCount from '../ProductsCartCount/ProductsCartCount';
+import { useNavigate } from 'react-router-dom';
+
 
 const logout = () => {
   Cookies.remove('lambda_usr_token');
   location.reload();
 };
 export const Header = () => {
-
-  // const [img,SetData]=useState()
-  // if(Cookies.get('lambda_usr_token')){
-
-  //   const { data, loading ,error} = useQuery(_GetUser, {
-  //     variables: {
-  //       input: {
-  //         id: Cookies.get('lambda_usr_id'),
-  //         token: Cookies.get('lambda_usr_token')
-  //       }
-  //     }
-  //   });
-  //   if (loading) {
-  //     return <Spinner />;
-  //   }
-  //   if(error){
-  //     throw error;
-  //   }
-  //   SetData(data);
-  // }
-  // console.log(data.USER_GET.img)
+const navigate=useNavigate()
   return (
     <header>
       <nav>
-        <a href="" className="logo">
+        <i  className="logo" onClick={()=>navigate("/")}>
           <img src={Logo} alt="" />
           <h2>lambda</h2>
-        </a>
+        </i>
 
         <ul>
           <li>
@@ -81,7 +61,7 @@ export const Header = () => {
           <li className="cartIconContainer">
             <div className="cartIcon">
               <a href="/cart">
-                <ProuductsCartCount />
+                <ProductsCartCount />
                
                 <i className="fa-solid fa-cart-shopping"></i>
               </a>

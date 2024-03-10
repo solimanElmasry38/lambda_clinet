@@ -1,7 +1,4 @@
-
-
-
-  import { gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const _GetCartLength = gql`
 query Query($input: getCartInp) {

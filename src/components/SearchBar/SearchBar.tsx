@@ -58,7 +58,7 @@ function SearchBar() {
           display: isDropdownVisible ? 'block' : 'none'
         }}
       >
-        {data.PRODUCTS_GET &&
+        {data &&
           data.PRODUCTS_GET.filter((item) => {
             return queryRef && item.name.toLowerCase().startsWith(queryRef.toLowerCase());
           }).map((i) => (
