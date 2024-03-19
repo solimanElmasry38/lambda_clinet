@@ -11,13 +11,19 @@ table {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    width: 40px; /* Fixed width for each cell */
+    // width: 50px; /* Fixed width for each cell */
+
     // max-width: 60px;
     // white-space: nowrap; /* Prevent text from wrapping */
     // overflow: hidden; /* Hide overflowing text */
     // text-overflow: ellipsis; /* Add ellipsis for overflow */
   }
-  
+  td:last-child{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+  }
   th {
     background-color: #15283c;
     color:white;

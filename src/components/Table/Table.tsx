@@ -2,15 +2,16 @@ import React from 'react';
 
 import './Table.scss';
 function Table({  headers ,children}) {
-    const header0=headers[0]
-//   console.log(data);
+  
   return (
     <table>
       <thead>
         <tr>
           {headers.map((header) => (
-            <th>{header}</th>
+            <th key={header}>{header}</th>
           ))}
+            <th>action</th>
+          
         </tr>
       </thead>
       <tbody>

@@ -73,6 +73,14 @@ input[type="submit"] {
   cursor: pointer;
   transition: all 0.3s linear;
 }
+.fa-trash{
+  color:red;
+  cursor: pointer;
+}
+.fa-pen-to-square{
+  color:green;
+  cursor: pointer;
+}
 @media only screen and (max-width: 480px) {
   #root{
     width:100vw;
