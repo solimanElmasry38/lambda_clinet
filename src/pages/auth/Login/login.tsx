@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import {  useState } from 'react';
 import { GlassOverLay } from '../../../components/GlassOverLay/overLay';
 import '../auth.scss';
 import { LazyBackground } from '../../../components/lazy';

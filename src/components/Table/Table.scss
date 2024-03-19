@@ -1,0 +1,35 @@
+
+table {
+    // border-collapse: collapse;
+    width: 100%;
+  max-height: 100vh;
+//   overflow: scroll;
+    // max-width: 800px; /* Adjust max-width as needed */
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    width: 40px; /* Fixed width for each cell */
+    // max-width: 60px;
+    // white-space: nowrap; /* Prevent text from wrapping */
+    // overflow: hidden; /* Hide overflowing text */
+    // text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }
+  
+  th {
+    background-color: #15283c;
+    color:white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  td:nth-child(4) , td:nth-child(5) { /* Assuming description column is the 4th column */
+    // white-space: normal; /* Allow text to wrap */
+    max-width: 150px; /* Adjust max-width as needed */
+    overflow-x: hidden; /* Hide overflowing text */
+    // background-color: rgb(225, 209, 65);
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }

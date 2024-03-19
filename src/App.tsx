@@ -14,12 +14,21 @@ const VerifyEmail = React.lazy(() => import('./pages/auth/verifyEmail/verifyEmai
 const Signup = React.lazy(() => import('./pages/auth/Singup/signup'));
 const Login = React.lazy(() => import('./pages/auth/Login/login'));
 const Home = React.lazy(() => import('./pages/home/home'));
+const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
 
 export const App = () => {
+  const isDashboardRoute = location.pathname.includes('/dashboard');
+
   return (
     <>
-      <Header />
-      <SubHeader />
+          <Header />
+
+      {!isDashboardRoute && (
+        <>
+          <SubHeader />
+        </>
+      )}
+
       <Routes>
         <Route element={<PrivateRoutes />}>
           <Route
@@ -31,7 +40,15 @@ export const App = () => {
             }
           />
         </Route>
-
+        <Route
+          path="dashboard"
+          element={
+            <React.Suspense fallback={<Spinner />}>
+              {/* Pass props to Cart component */}
+              <Dashboard />
+            </React.Suspense>
+          }
+        />
         <Route
           path="cart"
           element={
@@ -83,7 +100,12 @@ export const App = () => {
           }
         />
       </Routes>
-      <Footer />
+      {!isDashboardRoute && (
+        <>
+                <Footer />
+
+        </>
+      )}
     </>
   );
 };
