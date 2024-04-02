@@ -35,7 +35,8 @@ const PopUpForm = ({mutation,children,inputs}) => {
                       {children}
                   
                   </div>
-                  <button className="Btn" onClick={()=>{
+                  <button className="Btn" onClick={(e)=>{
+                    e.preventDefault()
                     handelMutation()
                   }}>create</button>
               </form>

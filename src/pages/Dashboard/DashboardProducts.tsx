@@ -7,6 +7,7 @@ import { useToasts } from 'react-toast-notifications';
 import { _RemoveProduct } from '../../gql/mutation/removeProduct';
 import { _CreateUser } from '../../gql/mutation/createUser.gql';
 import PopUpForm from '../../components/PopUpForm/PopUpForm';
+import { _CreateProduct } from '../../gql/mutation/createProduct';
 
 function DashboardProducts() {
   const { addToast } = useToasts();
@@ -65,7 +66,7 @@ function DashboardProducts() {
 
   return (
     <>
-      <PopUpForm mutation={_CreateUser} inputs={formData}>
+      <PopUpForm mutation={_CreateProduct} inputs={formData}>
         <label htmlFor="">name</label>
         <input
           type="text"

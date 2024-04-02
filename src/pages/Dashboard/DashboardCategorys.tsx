@@ -7,12 +7,14 @@ import { useToasts } from 'react-toast-notifications';
 import { _RemoveCategorys } from '../../gql/mutation/removeCategorys';
 import PopUpForm from '../../components/PopUpForm/PopUpForm';
 import { _CreateUser } from '../../gql/mutation/createUser.gql';
+import { _CreateCategory } from '../../gql/mutation/createCategory';
 
 function DashboardCategorys() {
   const { addToast } = useToasts();
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [formData, setFormData] = useState({
-    name: ''
+    name: '',
+    img: ''
     // Add more form fields here if needed
   });
   const [REMOVE_CATEGORYS, _mutationObj] = useMutation(_RemoveCategorys);
@@ -52,14 +54,29 @@ function DashboardCategorys() {
   };
   return (
     <>
-      <PopUpForm mutation={_CreateUser} inputs={formData}>
-      <label htmlFor="">name</label>
+      <PopUpForm mutation={_CreateCategory} inputs={formData}>
+        <label htmlFor="">name</label>
 
         <input
           type="text"
           id="name"
           name="name"
           value={formData.name}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              [e.target.name]: e.target.value
+            });
+          }}
+        />
+
+        <label htmlFor="">img</label>
+
+        <input
+          type="text"
+          id="img"
+          name="img"
+          value={formData.img}
           onChange={(e) => {
             setFormData({
               ...formData,
