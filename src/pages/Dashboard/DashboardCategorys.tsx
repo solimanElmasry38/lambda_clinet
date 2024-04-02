@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Table from '../../components/Table/Table';
 import { Spinner } from '../../components/Spinner/Spinner';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { _GetCategorys } from '../../gql/query/getCategorys';
 import { useToasts } from 'react-toast-notifications';
+import { _RemoveCategorys } from '../../gql/mutation/removeCategorys';
+import PopUpForm from '../../components/PopUpForm/PopUpForm';
+import { _CreateUser } from '../../gql/mutation/createUser.gql';
 
 function DashboardCategorys() {
   const { addToast } = useToasts();
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+  const [formData, setFormData] = useState({
+    name: ''
+    // Add more form fields here if needed
+  });
+  const [REMOVE_CATEGORYS, _mutationObj] = useMutation(_RemoveCategorys);
+
   const { data, loading, error } = useQuery(_GetCategorys);
   if (loading) {
     return <Spinner />;
@@ -15,10 +25,59 @@ function DashboardCategorys() {
     addToast(error.message, { appearance: 'error' });
     throw error;
   }
-
+  const handelRemove = async () => {
+    await REMOVE_CATEGORYS({
+      variables: {
+        input: {
+          Ids: selectedProducts
+        }
+      }
+    })
+      .then((res) => {
+        addToast(res.data, { appearance: 'success' });
+        window.location.reload();
+      })
+      .catch((err) => {
+        addToast(err.message, { appearance: 'error' });
+      });
+  };
+  const handleCheckboxChange = (productId: string) => {
+    setSelectedProducts((prevSelectedProducts) => {
+      if (prevSelectedProducts.includes(productId)) {
+        return prevSelectedProducts.filter((id) => id !== productId);
+      } else {
+        return [...prevSelectedProducts, productId];
+      }
+    });
+  };
   return (
     <>
-      <div className="actionsBar"> actions Bar</div>
+      <PopUpForm mutation={_CreateUser} inputs={formData}>
+      <label htmlFor="">name</label>
+
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              [e.target.name]: e.target.value
+            });
+          }}
+        />
+      </PopUpForm>
+
+      <div className="actionsBar">
+        {selectedProducts.length > 0 ? (
+          <>
+            <i className="fa-solid fa-trash" onClick={handelRemove}></i>
+          </>
+        ) : (
+          <i className="fa-solid fa-trash  lowOpacity"></i>
+        )}
+      </div>
       <div className="tableCountainer">
         <Table
           headers={
@@ -33,6 +92,15 @@ function DashboardCategorys() {
           }>
           {data.GET_CATEGORYS.map((category) => (
             <tr key={category.id}>
+              <td>
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  checked={selectedProducts.includes(category.id)}
+                  onChange={() => handleCheckboxChange(category.id)}
+                />
+              </td>
               <td>{category.id}</td>
               <td>{category.name}</td>
               <td>

@@ -4,9 +4,10 @@ import './Table.scss';
 function Table({  headers ,children}) {
   
   return (
-    <table>
+    <table >
       <thead>
         <tr>
+          <th>select</th>
           {headers.map((header) => (
             <th key={header}>{header}</th>
           ))}

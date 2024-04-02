@@ -41,7 +41,7 @@ export const App = () => {
           />
         </Route>
         <Route
-          path="dashboard"
+          path="dashboard/*"
           element={
             <React.Suspense fallback={<Spinner />}>
               {/* Pass props to Cart component */}
