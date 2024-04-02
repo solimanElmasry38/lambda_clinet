@@ -29,6 +29,12 @@ function Search() {
   if (ProductsQuery.loading) {
     return <Spinner />;
   }
+  if (!ProductsQuery.loading) {
+   console.log(ProductsQuery.data)
+  }
+  if(ProductsQuery.error){
+    throw ProductsQuery.error
+  }
   return (
     <>
       <section className="searchSec">
