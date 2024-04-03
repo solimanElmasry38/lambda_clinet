@@ -17,7 +17,7 @@ const wsLink = new GraphQLWsLink(createClient({
   url: 'ws://192.168.1.11:8888/graphql',
 }));
 const httpLink = new HttpLink({
-  uri: 'http://192.168.1.11:8888/graphql'
+  uri: 'https://lambdaserver-production.up.railway.app/'
 });
 const splitLink = split(
   ({ query }) => {

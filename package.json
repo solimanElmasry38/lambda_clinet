@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "vite preview",
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -25,6 +26,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0",
+    "react-scripts": "^5.0.1",
     "react-toast-notifications": "^2.5.1",
     "react-toastify": "^10.0.4",
     "three": "^0.158.0"

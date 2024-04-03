@@ -1,6 +1,6 @@
 import './home.scss';
 import { Carousel } from '../../components/Carousel/Carousel';
-import { useQuery, useSubscription } from '@apollo/client';
+import { useQuery} from '@apollo/client';
 import { _GetOffers } from '../../gql/query/getOffers';
 import Cookies from 'js-cookie';
 import { Spinner } from '../../components/Spinner/Spinner';
