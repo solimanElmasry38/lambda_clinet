@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { SearchProvider } from './context/searchCtx.tsx';
 import { LoadingProvider } from './context/loadingCtx.tsx';
-import { ToastProvider } from 'react-toast-notifications';
+
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { createClient } from 'graphql-ws';
 import { split, HttpLink } from '@apollo/client';
@@ -45,9 +45,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ApolloProvider client={client}>
       <LoadingProvider>
         <SearchProvider>
-          <ToastProvider>
+         
             <App />
-          </ToastProvider>
+       
         </SearchProvider>
       </LoadingProvider>
     </ApolloProvider>

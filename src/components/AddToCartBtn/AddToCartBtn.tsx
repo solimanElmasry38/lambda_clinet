@@ -3,12 +3,11 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import Cookies from 'js-cookie';
 import { _Add } from '../../gql/mutation/addToCart';
 
-import { useToasts } from 'react-toast-notifications';
 import { useEffect, useState } from 'react';
 import { _IsProductAvailable } from '../../gql/query/isProductAvailable';
 import { Spinner } from '../Spinner/Spinner';
 export const AddToCartBtn = ({ id }) => {
-  const { addToast } = useToasts();
+  
 
   const [IsAvailableFunc, { data, loading }] = useLazyQuery(_IsProductAvailable);
   const [r, setR] = useState(true);
@@ -31,7 +30,7 @@ export const AddToCartBtn = ({ id }) => {
         setR(res.data.ADD_TO_CART.availability);
       })
       .catch((err) => {
-        addToast(err.message, { appearance: 'error' });
+        console.log(err)
       });
   };
   let counter = 0;

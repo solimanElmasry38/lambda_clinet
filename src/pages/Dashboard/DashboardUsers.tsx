@@ -4,13 +4,13 @@ import { _GetUsers } from '../../gql/query/getUsers.gql';
 import { Spinner } from '../../components/Spinner/Spinner';
 import Cookies from 'js-cookie';
 import Table from '../../components/Table/Table';
-import { useToasts } from 'react-toast-notifications';
+
 import { _RemoveUsers } from '../../gql/mutation/removeUsers';
 import PopUpForm from '../../components/PopUpForm/PopUpForm';
 import { _CreateUser } from '../../gql/mutation/createUser.gql';
 
 function DashboardUsers() {
-  const { addToast } = useToasts();
+
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     user_name: '',
@@ -36,7 +36,7 @@ function DashboardUsers() {
     return <Spinner />;
   }
   if (error) {
-    addToast(error.message, { appearance: 'error' });
+    
     throw error;
   }
   const handelRemove = async () => {
@@ -48,11 +48,11 @@ function DashboardUsers() {
       }
     })
       .then((res) => {
-        addToast(res.data, { appearance: 'success' });
+        console.log(res)
         window.location.reload();
       })
       .catch((err) => {
-        addToast(err.message, { appearance: 'error' });
+        throw err;
       });
   };
   const handleCheckboxChange = (productId: string) => {

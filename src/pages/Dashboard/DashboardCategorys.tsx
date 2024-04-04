@@ -3,14 +3,14 @@ import Table from '../../components/Table/Table';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { useMutation, useQuery } from '@apollo/client';
 import { _GetCategorys } from '../../gql/query/getCategorys';
-import { useToasts } from 'react-toast-notifications';
+
 import { _RemoveCategorys } from '../../gql/mutation/removeCategorys';
 import PopUpForm from '../../components/PopUpForm/PopUpForm';
 import { _CreateUser } from '../../gql/mutation/createUser.gql';
 import { _CreateCategory } from '../../gql/mutation/createCategory';
 
 function DashboardCategorys() {
-  const { addToast } = useToasts();
+
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -24,7 +24,7 @@ function DashboardCategorys() {
     return <Spinner />;
   }
   if (error) {
-    addToast(error.message, { appearance: 'error' });
+  
     throw error;
   }
   const handelRemove = async () => {
@@ -36,11 +36,11 @@ function DashboardCategorys() {
       }
     })
       .then((res) => {
-        addToast(res.data, { appearance: 'success' });
+        console.log(res)
         window.location.reload();
       })
       .catch((err) => {
-        addToast(err.message, { appearance: 'error' });
+       throw err
       });
   };
   const handleCheckboxChange = (productId: string) => {

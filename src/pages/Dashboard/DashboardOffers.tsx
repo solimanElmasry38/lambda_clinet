@@ -4,14 +4,14 @@ import { Spinner } from '../../components/Spinner/Spinner';
 import { useMutation, useQuery } from '@apollo/client';
 import { _GetOffers } from '../../gql/query/getOffers';
 import Cookies from 'js-cookie';
-import { useToasts } from 'react-toast-notifications';
+
 import { _RemoveOffers } from '../../gql/mutation/removeOffers';
 import PopUpForm from '../../components/PopUpForm/PopUpForm';
 import { _CreateUser } from '../../gql/mutation/createUser.gql';
 import { _CreateOffer } from '../../gql/mutation/createOffer';
 
 function DashboardOffers() {
-  const { addToast } = useToasts();
+ 
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -33,7 +33,7 @@ function DashboardOffers() {
     return <Spinner />;
   }
   if (error) {
-    addToast(error.message, { appearance: 'error' });
+  
     throw error;
   }
   const handelRemove = async () => {
@@ -45,11 +45,11 @@ function DashboardOffers() {
       }
     })
       .then((res) => {
-        addToast(res.data, { appearance: 'success' });
+      console.log(res)
         window.location.reload();
       })
       .catch((err) => {
-        addToast(err.message, { appearance: 'error' });
+    throw err;
       });
   };
   const handleCheckboxChange = (productId: string) => {

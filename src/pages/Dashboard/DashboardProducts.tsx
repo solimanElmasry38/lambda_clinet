@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { _GetProducts } from '../../gql/query/getPoducts.gql';
 import { Spinner } from '../../components/Spinner/Spinner';
 import Table from '../../components/Table/Table';
-import { useToasts } from 'react-toast-notifications';
+
 import { _RemoveProduct } from '../../gql/mutation/removeProduct';
 import { _CreateUser } from '../../gql/mutation/createUser.gql';
 import PopUpForm from '../../components/PopUpForm/PopUpForm';
 import { _CreateProduct } from '../../gql/mutation/createProduct';
 
 function DashboardProducts() {
-  const { addToast } = useToasts();
+ 
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -33,7 +33,7 @@ function DashboardProducts() {
     return <Spinner />;
   }
   if (error) {
-    addToast(error.message, { appearance: 'error' });
+  
     throw error;
   }
 
@@ -56,11 +56,11 @@ function DashboardProducts() {
       }
     })
       .then((res) => {
-        addToast(res.data, { appearance: 'success' });
+       console.log(res)
         window.location.reload();
       })
       .catch((err) => {
-        addToast(err.message, { appearance: 'error' });
+        throw err;
       });
   };
 
