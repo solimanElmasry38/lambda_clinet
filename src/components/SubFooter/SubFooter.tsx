@@ -14,7 +14,7 @@ function SubFooter() {
   const HealthCategQuery = useQuery(_GetCategory, {
     variables: {
       input: {
-        Categ_name: 'health'
+        Categ_name: 'fashoin'
       }
     }
   });
@@ -30,7 +30,7 @@ function SubFooter() {
   const SmartHomeCategQuery = useQuery(_GetCategory, {
     variables: {
       input: {
-        Categ_name: 'smartHome'
+        Categ_name: 'smart home'
       }
     }
   });

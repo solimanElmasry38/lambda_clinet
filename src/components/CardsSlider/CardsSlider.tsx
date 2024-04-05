@@ -4,7 +4,7 @@ import './CardsSlider.scss';
 
 import { AddToCartBtn } from '../AddToCartBtn/AddToCartBtn';
 
-function CardsSlider({ Cards }) {
+function CardsSlider({ Cards ,onCartCountUpdate}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerScreen, setCardsPerScreen] = useState(0);
 
@@ -38,8 +38,8 @@ function CardsSlider({ Cards }) {
       <div className="carousel-wrapper">
         <div className="carousel-container">
           {Cards.slice(currentIndex, currentIndex + cardsPerScreen).map((card, index) => (
-            <ProductCard key={index} data={card}>
-              <AddToCartBtn id={card.id} />
+            <ProductCard key={index} data={card} >
+              <AddToCartBtn id={card.id} onCartCountUpdate={onCartCountUpdate}/>
             </ProductCard>
           ))}
         </div>

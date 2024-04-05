@@ -1,9 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const _GetCartProducts = gql`
- query Query($input: getCartInp) {
-  GET_CART_PRODUCTS(input: $input) {
-    TotalProductInCart
+ query CART_PRODUCTS_GET($input: getCartInp) {
+  CART_PRODUCTS_GET(input: $input) {
     products {
       id
       name
@@ -14,6 +13,7 @@ export const _GetCartProducts = gql`
       desc
       coun_in_cart
     }
+    TotalProductInCart
   }
 }
 `;

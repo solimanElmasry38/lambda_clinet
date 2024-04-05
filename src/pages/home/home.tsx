@@ -1,6 +1,6 @@
 import './home.scss';
 import { Carousel } from '../../components/Carousel/Carousel';
-import { useQuery} from '@apollo/client';
+import { useLazyQuery, useQuery} from '@apollo/client';
 import { _GetOffers } from '../../gql/query/getOffers';
 import Cookies from 'js-cookie';
 import { Spinner } from '../../components/Spinner/Spinner';
@@ -8,8 +8,16 @@ import { _GetCategory } from '../../gql/query/getCategory';
 import CardsSlider from '../../components/CardsSlider/CardsSlider';
 import SubFooter from '../../components/SubFooter/SubFooter';
 import { _AddToCartSub } from '../../gql/subscribtion/addToCartSub';
+import { _GetCartCount } from '../../gql/query/getCartCount';
+import { useEffect } from 'react';
 
-const Home = () => {
+const Home =  ({onCartCountUpdate}) => {
+// console.log(onCartCountUpdate())
+  const [cartCountFunc] = useLazyQuery(_GetCartCount);
+ 
+
+
+
   const TechCategQuery = useQuery(_GetCategory, {
     variables: {
       input: {
@@ -23,7 +31,7 @@ const Home = () => {
   const SmartHomeCategQuery = useQuery(_GetCategory, {
     variables: {
       input: {
-        Categ_name: 'smartHome'
+        Categ_name: 'smart home'
       }
     }
   });
@@ -44,19 +52,30 @@ const Home = () => {
       }
     }
   });
+  useEffect(()=>{
+    const getCount =async ()=>{
+      await cartCountFunc({
+        variables: {
+          input: {
+            usr_id: Cookies.get('lambda_usr_id'),
+          }
+        }
+      }).then(res=>{
+        console.log(res.data.GET_CART_COUNT)
+        localStorage.setItem("cartCount-query",res.data.GET_CART_COUNT)
+      })
+    }
+    getCount()
 
-  // useEffect(() => {
-  //   if (TechCategQuery.loading || SmartHomeCategQuery.loading || booksCategQuery.loading || offersQuery.loading) {
-  //     loading(); // Call loading function to set loading state to true
-  //   }
-  // }, [TechCategQuery.loading, SmartHomeCategQuery.loading, booksCategQuery.loading, offersQuery.loading]);
+  },[cartCountFunc])
 
-  // Conditionally render Spinner if any of the queries are still loading
+  
+   
   if (
     TechCategQuery.loading ||
     SmartHomeCategQuery.loading ||
     booksCategQuery.loading ||
-    offersQuery.loading
+    offersQuery.loading 
     
   ) {
     return <Spinner />;
@@ -75,11 +94,11 @@ const Home = () => {
       </div>
       <div className="homeContainer">
         {/* Check if data is available before rendering CardsSlider components */}
-        {TechCategQuery.data && <CardsSlider Cards={TechCategQuery.data.GET_CATEGORY.product} />}
+        {TechCategQuery.data && <CardsSlider Cards={TechCategQuery.data.GET_CATEGORY.product} onCartCountUpdate={onCartCountUpdate} />}
         {SmartHomeCategQuery.data && (
-          <CardsSlider Cards={SmartHomeCategQuery.data.GET_CATEGORY.product} />
+          <CardsSlider Cards={SmartHomeCategQuery.data.GET_CATEGORY.product} onCartCountUpdate={onCartCountUpdate}/>
         )}
-        {booksCategQuery.data && <CardsSlider Cards={booksCategQuery.data.GET_CATEGORY.product} />}
+        {booksCategQuery.data && <CardsSlider Cards={booksCategQuery.data.GET_CATEGORY.product} onCartCountUpdate={onCartCountUpdate}/>}
         <SubFooter />
       </div>
     </section>

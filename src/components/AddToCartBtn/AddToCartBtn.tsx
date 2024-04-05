@@ -6,10 +6,16 @@ import { _Add } from '../../gql/mutation/addToCart';
 import { useEffect, useState } from 'react';
 import { _IsProductAvailable } from '../../gql/query/isProductAvailable';
 import { Spinner } from '../Spinner/Spinner';
-export const AddToCartBtn = ({ id }) => {
-  
+import { _GetCartCount } from '../../gql/query/getCartCount';
+
+export const AddToCartBtn = ({ id ,onCartCountUpdate}) => {
+ 
+
 
   const [IsAvailableFunc, { data, loading }] = useLazyQuery(_IsProductAvailable);
+  const [productCountFunc, {  loading:productCountloading }] = useLazyQuery(_GetCartCount);
+
+  
   const [r, setR] = useState(true);
 
   const [ADD_TO_CART] = useMutation(_Add);
@@ -25,7 +31,9 @@ export const AddToCartBtn = ({ id }) => {
       }
     })
       .then((res) => {
-        // localStorage.setItem('shopping-cart-coutn', res.data.ADD_TO_CART.TotalProductInCart);
+       
+        onCartCountUpdate(res.data.ADD_TO_CART.cartLength)
+        localStorage.setItem('cartCount-query',res.data.ADD_TO_CART.cartLength)
 
         setR(res.data.ADD_TO_CART.availability);
       })
@@ -47,6 +55,10 @@ export const AddToCartBtn = ({ id }) => {
   if (loading) {
     return <Spinner />;
   }
+  if (productCountloading) {
+    return <Spinner />;
+  }
+
 
   return (
     <>
@@ -55,6 +67,17 @@ export const AddToCartBtn = ({ id }) => {
           className="item-cart-btn"
           onClick={async () => {
             await addProductToCart(id);
+            productCountFunc({
+              variables: {
+                input: {
+                  usr_id: Cookies.get('lambda_usr_id')
+                }
+              },
+              // skip: !Cookies.get('lambda_usr_id')
+            })
+          
+           
+            
           }}>
           Add To Cart
           {r && data.IS_AVILABLE}

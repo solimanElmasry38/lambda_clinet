@@ -9,16 +9,27 @@ import { Cart } from './pages/Cart/Cart';
 import Product from './pages/product/product';
 import Search from './pages/Search/Search';
 import { SubHeader } from './components/SubHeader/SubHeader';
+import { useState } from 'react';
 
 const VerifyEmail = React.lazy(() => import('./pages/auth/verifyEmail/verifyEmail'));
 const Signup = React.lazy(() => import('./pages/auth/Singup/signup'));
 const Login = React.lazy(() => import('./pages/auth/Login/login'));
-const Home = React.lazy(() => import('./pages/home/home'));
+
+
+
+
+import Home from "./pages/home/home"
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
+
 
 export const App = () => {
   const isDashboardRoute = location.pathname.includes('/dashboard');
+  const [_cartCount, setCartCount] = useState(0);
 
+  const handleCartCountUpdate = (newCount: React.SetStateAction<number>) => {
+    console.log("add to cart")
+    setCartCount(newCount);
+  };
   return (
     <>
           <Header />
@@ -35,7 +46,7 @@ export const App = () => {
             index
             element={
               <React.Suspense fallback={<Spinner />}>
-                <Home />
+                <Home onCartCountUpdate={handleCartCountUpdate}/>
               </React.Suspense>
             }
           />
