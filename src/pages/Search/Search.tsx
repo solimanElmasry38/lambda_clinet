@@ -9,7 +9,7 @@ import VerProductCard from '../../components/VerProductCard/VerProductCard';
 
 import { _GetProductsNames } from '../../gql/query/getProductsNames';
 import { AddToCartBtn } from '../../components/AddToCartBtn/AddToCartBtn';
-function Search() {
+function Search({onCartCountUpdate}) {
   const [ProductsQueryFunc, ProductsQuery] = useLazyQuery(_GetProducts);
 
 
@@ -41,7 +41,7 @@ function Search() {
         {ProductsQuery.data &&
           ProductsQuery.data.PRODUCTS_GET.map((product) => (
             <VerProductCard item={product} IsCartProduct={false} key={product.id}>
-             <AddToCartBtn id={product.id}/>
+             <AddToCartBtn onCartCountUpdate={onCartCountUpdate} id={product.id}/>
             </VerProductCard>
           ))}
       </section>

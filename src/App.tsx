@@ -73,7 +73,7 @@ export const App = () => {
           path="search"
           element={
             <React.Suspense fallback={<Spinner />}>
-              <Search />
+              <Search onCartCountUpdate={handleCartCountUpdate}/>
             </React.Suspense>
           }
         />
