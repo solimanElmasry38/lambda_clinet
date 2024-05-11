@@ -40,9 +40,9 @@ import { CartQuantityProvider } from './context/cartQuantity.tsx';
 // });
 
 const client = new ApolloClient({
-  uri: 'https://lambdaserver-production.up.railway.app/',
+  // uri: 'https://lambdaserver-production.up.railway.app/',
 
-//  uri:'http://192.168.1.11:8888/graphql',
+ uri:'http://localhost:8888/graphql',
   cache: new InMemoryCache()
 });
 ReactDOM.createRoot(document.getElementById('root')!).render(

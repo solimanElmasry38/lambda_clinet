@@ -10,20 +10,25 @@ import { useSearch } from '../../context/searchCtx';
 export const SubHeader = ({}) => {
   const { SelectedCategory, selectedCategoryId } = useSearch();
 
-  const { data, loading } = useQuery(_GetCategorys);
+  const { data, loading ,error} = useQuery(_GetCategorys,{variables:{
+    input:{
+
+    }
+  }});
   if (loading) {
     return 'loading';
   }
-
+console.log(error)
+console.log(data)
   return (
     <div className="subHeader">
       <SearchBar />
 
       <ul>
         {data &&
-          data.GET_CATEGORYS.map((cat) => (
+          data.GET_CATEGORYS.map((cat,index) => (
             <Category
-              key={cat.id}
+              key={index}
               categoryName={cat.name}
               categoryId={cat.id}
               isSelected={cat.id === selectedCategoryId}

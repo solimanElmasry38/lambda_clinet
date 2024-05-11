@@ -39,6 +39,7 @@ function CardsSlider({ Cards ,onCartCountUpdate}) {
         <div className="carousel-container">
           {Cards.slice(currentIndex, currentIndex + cardsPerScreen).map((card, index) => (
             <ProductCard key={index} data={card} >
+            
               <AddToCartBtn id={card.id} onCartCountUpdate={onCartCountUpdate}/>
             </ProductCard>
           ))}
