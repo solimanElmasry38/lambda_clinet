@@ -34,6 +34,7 @@ function CardsSlider({ Cards ,onCartCountUpdate}) {
   }, []);
 
   return (
+    
     <div className="multi-card-carousel">
       <div className="carousel-wrapper">
         <div className="carousel-container">

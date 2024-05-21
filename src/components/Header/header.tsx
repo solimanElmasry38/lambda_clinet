@@ -67,6 +67,18 @@ const navigate=useNavigate()
               </a>
             </div>
           </li>
+
+          <li className="wishListIconContainer">
+            <div className="wishListIcon">
+              <a href="/wishlist">
+                
+               
+              <i className="fa-solid fa-heart"></i>
+
+              </a>
+            </div>
+          </li>
+
         </ul>
       </nav>
     </header>

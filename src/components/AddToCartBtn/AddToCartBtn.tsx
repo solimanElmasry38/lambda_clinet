@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { _IsProductAvailable } from '../../gql/query/isProductAvailable';
 import { Spinner } from '../Spinner/Spinner';
 import { _GetCartCount } from '../../gql/query/getCartCount';
+import { AddCrtInp } from '../../gql/__CodeGen__/graphql';
 
 export const AddToCartBtn = ({ id ,onCartCountUpdate}) => {
  
@@ -16,18 +17,22 @@ export const AddToCartBtn = ({ id ,onCartCountUpdate}) => {
   const [productCountFunc, {  loading:productCountloading }] = useLazyQuery(_GetCartCount);
 
   
+
   const [r, setR] = useState(true);
 
   const [ADD_TO_CART] = useMutation(_Add);
 
   const addProductToCart = async (id) => {
+    const inp={
+      Product_count: 1,
+      Product_id: id,
+      usr_id: Cookies.get('lambda_usr_id')
+    }
+
+    
     await ADD_TO_CART({
       variables: {
-        input: {
-          Product_count: 1,
-          Product_id: id,
-          usr_id: Cookies.get('lambda_usr_id')
-        }
+        input: inp
       }
     })
       .then((res) => {

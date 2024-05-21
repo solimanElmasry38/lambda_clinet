@@ -4,6 +4,7 @@ export const _GetCategorys = gql`
 query Query($input: CategsInp) {
   GET_CATEGORYS(input: $input) {
     name
+    
     product {
       name
       coun_in_cart

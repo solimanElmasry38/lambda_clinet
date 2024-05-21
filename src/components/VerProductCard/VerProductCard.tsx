@@ -5,6 +5,7 @@ import './VerProductCard.scss';
 
 import { _GetProduct } from '../../gql/query/getProduct.gql';
 import Rating from '../Rating/Rating';
+import { WishListBtn } from '../WishListBtn/wishLIstBtn';
 
 function VerProductCard({ item, IsCartProduct, children }) {
  
@@ -30,6 +31,7 @@ function VerProductCard({ item, IsCartProduct, children }) {
         ) : (
           <p className="item-price">${item.price}</p>
         )}
+        <WishListBtn data={item}/>
         {children}
       </div>
     </div>

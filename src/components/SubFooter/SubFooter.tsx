@@ -1,103 +1,63 @@
 import React from 'react';
 import './SubFooter.scss';
-import { _GetCategory } from '../../gql/query/getCategory';
+import { gql } from '@apollo/client';
+
 import { useQuery } from '@apollo/client';
 
 import { Spinner } from '../Spinner/Spinner';
 
 import { useSearch } from '../../context/searchCtx';
 import { useNavigate } from 'react-router-dom';
+import { _GetCategorys } from '../../gql/query/getCategorys';
 
 function SubFooter() {
   const { onCategoryChange, SelectedCategory } = useSearch();
   const navigate = useNavigate();
-  const HealthCategQuery = useQuery(_GetCategory, {
-    variables: {
-      input: {
-        Categ_name: 'fashoin'
+  const categsQuery = useQuery(gql`
+    query Query($input: CategsInp) {
+      GET_CATEGORYS(input: $input) {
+        name
+        img
+      }
+    }
+  `,{
+    variables:{
+      input:{
+        takeCount:4
       }
     }
   });
-
-  const SportCategQuery = useQuery(_GetCategory, {
-    variables: {
-      input: {
-        Categ_name: 'sport'
-      }
-    }
-  });
-
-  const SmartHomeCategQuery = useQuery(_GetCategory, {
-    variables: {
-      input: {
-        Categ_name: 'smart home'
-      }
-    }
-  });
-  const techCategQuery = useQuery(_GetCategory, {
-    variables: {
-      input: {
-        Categ_name: 'tech'
-      }
-    }
-  });
-
-  const errors =
-    HealthCategQuery.error ||
-    SmartHomeCategQuery.error ||
-    SportCategQuery.error ||
-    techCategQuery.error;
-  const Loadings =
-    HealthCategQuery.loading ||
-    SmartHomeCategQuery.loading ||
-    SportCategQuery.loading ||
-    techCategQuery.loading;
-  if (Loadings) {
-    return <Spinner />;
-  }
-
-  if (errors) {
-    throw errors;
-  }
+if(categsQuery.loading){
+return <Spinner/>
+}
+if(categsQuery.error){
+throw categsQuery.error
+}
   const handelClick = (categoryId) => {
     navigate('/search');
     onCategoryChange(categoryId);
     SelectedCategory(categoryId);
   };
+  console.log(categsQuery.data)
   return (
     <div className="SubFooter">
+
+{
+  categsQuery.data?(
+    categsQuery.data.GET_CATEGORYS.map(categ=>(
       <div
-        className="CategoryCard"
-        onClick={() => {
-          handelClick(HealthCategQuery.data.GET_CATEGORY.id);
-        }}
-      >
-        <img src={HealthCategQuery.data.GET_CATEGORY.img} alt="" />
-      </div>
-      <div
-        className="CategoryCard"
-        onClick={() => {
-          handelClick(SmartHomeCategQuery.data.GET_CATEGORY.id);
-        }}
-      >
-        <img src={SmartHomeCategQuery.data.GET_CATEGORY.img} alt="" />
-      </div>
-      <div
-        className="CategoryCard"
-        onClick={() => {
-          handelClick(SportCategQuery.data.GET_CATEGORY.id);
-        }}
-      >
-        <img src={SportCategQuery.data.GET_CATEGORY.img} alt="" />
-      </div>
-      <div
-        className="CategoryCard"
-        onClick={() => {
-          handelClick(techCategQuery.data.GET_CATEGORY.id);
-        }}
-      >
-        <img src={techCategQuery.data.GET_CATEGORY.img} alt="" />
-      </div>
+      className="CategoryCard"
+      onClick={() => {
+        handelClick(categ.id);
+      }}>
+      <img src={categ.img} alt="" />
+    </div>
+    ))
+
+  ):null
+
+}
+     
     </div>
   );
 }

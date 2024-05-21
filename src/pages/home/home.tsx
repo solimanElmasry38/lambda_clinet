@@ -63,7 +63,7 @@ const Home = ({ onCartCountUpdate }) => {
            { el.name}
             </h1><CardsSlider key={index} Cards={el.product} onCartCountUpdate={onCartCountUpdate} /></>
         ))}
-        {/* <SubFooter /> */}
+        <SubFooter />
       </div>
     </section>
   );

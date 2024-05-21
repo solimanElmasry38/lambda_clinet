@@ -19,6 +19,8 @@ const Login = React.lazy(() => import('./pages/auth/Login/login'));
 
 
 import Home from "./pages/home/home"
+import { WishList } from './pages/wishList/wishList';
+import NotFound from './components/NotFound/NotFound';
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
 
 
@@ -41,6 +43,14 @@ export const App = () => {
       )}
 
       <Routes>
+      <Route
+          path="*"
+          element={
+            <React.Suspense fallback={<Spinner />}>
+              <NotFound />
+            </React.Suspense>
+          }
+        />
         <Route element={<PrivateRoutes />}>
           <Route
             index
@@ -74,6 +84,14 @@ export const App = () => {
           element={
             <React.Suspense fallback={<Spinner />}>
               <Search onCartCountUpdate={handleCartCountUpdate}/>
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="wishlist"
+          element={
+            <React.Suspense fallback={<Spinner />}>
+              <WishList/>
             </React.Suspense>
           }
         />

@@ -1,0 +1,22 @@
+.wishListBtnContainer {
+  width: 100%;
+  position: relative;
+
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .activeWishListIcon {
+    color: red;
+  }
+  i {
+    font-size: 23px;
+    position: absolute;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+}
