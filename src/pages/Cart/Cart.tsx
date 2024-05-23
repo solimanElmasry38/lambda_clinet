@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/client';
 import { _GetCartProducts } from '../../gql/query/getCartProducts';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { useCartQuantity } from '../../context/cartQuantity';
+import RemoveFromCartBtn from '../../components/RemoveFromCartBtn/RemoveFromCartBtn';
 
 
 export const Cart = () => {
@@ -17,7 +18,9 @@ console.log(cartQuantity)
         usr_id: Cookies.get('lambda_usr_id'),
       },
     },
-  });
+  },
+
+);
 
  
   const loading = cartProductsQuery.loading;
@@ -54,9 +57,8 @@ console.log(cartQuantity)
           <p className="empty">Cart is empty</p>
         ) : (
           cartProductsQuery.data && cartProductsQuery.data.CART_PRODUCTS_GET.products.map((item) => (
-            <VerProductCard item={item} key={item.id} IsCartProduct={true}>
-              <i className="fa-solid fa-trash" style={{ color: 'red', cursor: 'pointer' }}></i>
-            </VerProductCard>
+            <VerProductCard item={item} key={item.id} IsCartProduct={true}/>
+            
           ))
         )}
       </div>

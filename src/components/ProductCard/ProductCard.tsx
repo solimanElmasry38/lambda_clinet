@@ -14,9 +14,9 @@ export const ProductCard = ({ data, children }) => {
   return (
     <div className="item-container">
       <div className="main-item">
-        <Ratio ratio={'4x3'}>
+       
           <img src={img} alt="" />
-        </Ratio>
+          
       </div>
       <h2 className="item-heading">
         <a href={`/products/${id}`}>{name}</a>

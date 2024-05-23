@@ -2,7 +2,6 @@ import { useMutation, useQuery } from '@apollo/client';
 import { _GetWishList } from '../../gql/query/getWishList';
 import Cookies from 'js-cookie';
 import { Spinner } from '../../components/Spinner/Spinner';
-import VerProductCard from '../../components/VerProductCard/VerProductCard';
 import './wishList.scss';
 import WishListCard from '../../components/WishListCard/WishListCard';
 import { _RemoveFromWishList } from '../../gql/mutation/removeFromWishList';

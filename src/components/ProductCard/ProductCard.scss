@@ -1,23 +1,29 @@
 
 .item-container {
-  background-color: #fff;
-  width: 23%;
-  max-height: 100%;
-  height: 100%;
-  padding: 1rem;
-  border-radius: 1rem;
+  // background-color: #cf1212;
+  flex-shrink: 1;
+  flex-grow: 1;
+  max-width: 25%;
+  // max-height: 100%;
+  height: 95%;
+  padding: 10px;
+  border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  
 
   .main-item {
     width: 100%;
     height: 25%;
+  border-radius: 10px;
+
     display: block;
     margin: 0 auto;
-    // background-color: #0978d37e;
+overflow: hidden;
+    background-color: #0978d37e;
 
     img {
       width: 100%;
@@ -37,7 +43,7 @@
   .item-description {
     width: 100%;
     // height: 45%;
-    height: 18%;
+    height: 15%;
 
     margin: 0.5rem 0;
     font-size: 0.9rem;

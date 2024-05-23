@@ -2,16 +2,16 @@
 @use "./funcs";
 @use "./mixins";
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  // font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  // // line-height: 1.5;
   color-scheme: light dark;
-  color: #ffffff;
-  // background-color: #000000;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  // color: #ffffff;
+  // // background-color: #000000;
+  // font-synthesis: none;
+  // text-rendering: optimizeLegibility;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-text-size-adjust: 100%;
 }
 * {
   margin: 0;
@@ -23,15 +23,12 @@
 }
 body {
   max-width: 100vw;
-  min-height: 100vh;
+  background-color: #535bf2;
+  overflow-x: hidden;
 }
 
 #root {
-  min-height: 100vh;
-  overflow: hidden;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
+
   background-color: rgb(233, 234, 235);
 }
 a {

@@ -5,7 +5,7 @@
 }
 .cartContainer {
   display: flex;
-
+gap:20px;
 
   justify-content: space-between;
   width: 100wh;
@@ -13,12 +13,17 @@
   z-index: 10;
   margin-top: 100px;
   .cart {
-    min-height: 60vh;
+  //  height: 60vh; 
     width: 70%;
-margin: 0 auto;
-    display: grid;
-    grid-template-columns: 50px 1fr 50px;
-    grid-auto-rows: min(350px) ;
+// margin: 0 auto;
+    // display: grid;
+    // grid-template-columns: 50px 1fr 50px;
+    // grid-auto-rows: min(350px) ;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: center;
+    justify-content: space-between;
     .cartProdContainer {
       width: 90%;
       height: 150px;

@@ -1,0 +1,14 @@
+.trashIconContainer{
+    width: 50px;
+    position: relative;
+  
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    
+    i{
+font-size: 23px;
+color:red
+    }
+}
